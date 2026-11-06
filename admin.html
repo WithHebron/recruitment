@@ -3,100 +3,193 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>채용 관리자 시스템 | 위헤브론</title>
+  <title>채용 관리 시스템 | 위드헤브론</title>
   
-  <!-- 💡 파비콘 적용 코드 (PNG 이미지인 경우) -->
+  <!-- 폰트 로드: 나눔명조 & Pretendard -->
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&display=swap" rel="stylesheet">
+  
+  <!-- 파비콘 -->
   <link rel="icon" type="image/png" href="./favicon.png">
 
   <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body class="bg-slate-100 text-slate-800 min-h-screen">
 
-  <header class="bg-slate-900 text-white py-4 px-6 shadow-md">
-    <div class="max-w-6xl mx-auto flex justify-between items-center">
-      <h1 class="text-lg font-bold">위헤브론 채용 관리 시스템 (Admin)</h1>
-      <span class="text-xs bg-slate-800 text-slate-400 px-3 py-1 rounded-full">Static Mode</span>
+  <style>
+    body {
+      font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+    }
+    .font-myeongjo {
+      font-family: 'Nanum Myeongjo', serif;
+    }
+    .bg-brand-red { background-color: #E5254E; }
+    .text-brand-red { color: #E5254E; }
+    .bg-brand-blue { background-color: #00B5EC; }
+    .text-brand-blue { color: #00B5EC; }
+    .bg-brand-yellow { background-color: #F5C827; }
+    .text-brand-yellow { color: #F5C827; }
+    .bg-brand-green { background-color: #68B04D; }
+    .text-brand-green { color: #68B04D; }
+    .bg-dark-green { background-color: #0E352E; }
+  </style>
+</head>
+<body class="bg-[#FBF9F5] text-slate-800 min-h-screen flex flex-col">
+
+  <!-- Header / Navigation (동일한 디자인 & 로고 적용) -->
+  <header class="bg-white border-b border-slate-200 sticky top-0 z-40 shadow-sm">
+    <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
+      <div class="flex items-center space-x-3">
+        <img src="./로고_투명.png" alt="WithHebron Logo" class="h-12 w-auto object-contain" onerror="this.src='./WH-로고-십자가.png'; this.className='h-9';">
+        <span class="font-myeongjo font-bold text-sm text-slate-400 border-l border-slate-200 pl-3">Admin Dashboard</span>
+      </div>
+      <a href="./index.html" target="_blank" class="text-xs text-slate-500 hover:text-brand-blue flex items-center gap-1 font-semibold">
+        채용 사이트 바로가기 ↗
+      </a>
     </div>
   </header>
 
-  <main class="max-w-6xl mx-auto p-6 space-y-6">
-    <div class="flex justify-between items-center">
-      <h2 class="text-xl font-bold text-slate-900">공고 관리 게시판</h2>
-      <div class="space-x-2">
-        <button onclick="openForm()" class="px-4 py-2 bg-blue-600 text-white rounded-lg text-sm font-semibold hover:bg-blue-700">+ 새 공고 작성</button>
-        <button onclick="exportJSON()" class="px-4 py-2 bg-emerald-600 text-white rounded-lg text-sm font-semibold hover:bg-emerald-700">💾 jobs.json 다운로드</button>
+  <!-- 메인 히어로 배너 -->
+  <section class="bg-dark-green text-white py-10 px-6 shadow-inner">
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row md:items-center justify-between gap-4">
+      <div>
+        <div class="inline-block bg-brand-yellow text-slate-900 text-xs font-bold px-3 py-1 rounded-full mb-2">
+          관리자 전용 페이지
+        </div>
+        <h1 class="font-myeongjo text-2xl md:text-3xl font-bold">
+          위드헤브론 채용 공고 관리 시스템 ⚙️
+        </h1>
+        <p class="text-xs text-slate-300 font-light mt-1">
+          공고를 등록·수정하신 후 [jobs.json 다운로드]를 통해 저장소에 업로드하세요.
+        </p>
+      </div>
+      <div class="flex items-center space-x-2">
+        <button onclick="openForm()" class="px-4 py-2.5 bg-brand-blue text-white rounded-lg text-xs font-bold shadow hover:opacity-90 flex items-center gap-1">
+          <span>+</span> 새 공고 작성
+        </button>
+        <button onclick="exportJSON()" class="px-4 py-2.5 bg-brand-green text-white rounded-lg text-xs font-bold shadow hover:opacity-90 flex items-center gap-1">
+          💾 jobs.json 다운로드
+        </button>
       </div>
     </div>
+  </section>
 
+  <main class="max-w-6xl w-full mx-auto p-6 space-y-6 flex-grow">
     <!-- 공고 목록 테이블 -->
-    <div class="bg-white rounded-xl shadow-sm border overflow-hidden">
-      <table class="w-full text-left border-collapse">
-        <thead class="bg-slate-50 border-b border-slate-200 text-xs font-semibold text-slate-500 uppercase">
-          <tr>
-            <th class="p-4">상태</th>
-            <th class="p-4">공고명</th>
-            <th class="p-4">모집기간</th>
-            <th class="p-4 text-right">관리</th>
-          </tr>
-        </thead>
-        <tbody id="admin-job-list" class="divide-y divide-slate-100 text-sm">
-          <!-- JS로 동적 생성 -->
-        </tbody>
-      </table>
+    <div class="bg-white rounded-2xl shadow-sm border border-amber-100 overflow-hidden">
+      <div class="p-5 border-b border-slate-100 flex items-center justify-between">
+        <h2 class="font-myeongjo text-lg font-bold text-slate-900 flex items-center gap-2">
+          <img src="./WH-로고-화살표.png" class="w-5 h-5 object-contain"> 등록된 공고 목록
+        </h2>
+        <span class="text-xs text-slate-400" id="job-count">총 0건</span>
+      </div>
+      <div class="overflow-x-auto">
+        <table class="w-full text-left border-collapse">
+          <thead class="bg-[#FAF8F5] border-b border-slate-200 text-xs font-bold text-slate-600 uppercase">
+            <tr>
+              <th class="p-4">상태</th>
+              <th class="p-4">공고명</th>
+              <th class="p-4">모집기간</th>
+              <th class="p-4 text-right">관리</th>
+            </tr>
+          </thead>
+          <tbody id="admin-job-list" class="divide-y divide-slate-100 text-sm">
+            <!-- JS로 동적 생성 -->
+          </tbody>
+        </table>
+      </div>
     </div>
   </main>
 
   <!-- 작성/수정 모달 -->
-  <div id="form-modal" class="hidden fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-    <div class="bg-white rounded-2xl max-w-lg w-full p-6 space-y-4 shadow-xl">
-      <h3 id="form-title" class="text-lg font-bold text-slate-900 border-b pb-3">공고 작성</h3>
+  <div id="form-modal" class="hidden fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl max-w-xl w-full p-6 space-y-4 shadow-2xl max-h-[90vh] overflow-y-auto">
+      <div class="flex justify-between items-center border-b pb-3">
+        <h3 id="form-title" class="font-myeongjo text-lg font-bold text-slate-900 flex items-center gap-2">
+          <img src="./WH-로고-하트.png" class="w-5 h-5"> 공고 작성
+        </h3>
+        <button onclick="closeForm()" class="text-slate-400 hover:text-slate-600 text-lg">✕</button>
+      </div>
       <form id="job-form" onsubmit="saveJob(event)" class="space-y-3">
         <input type="hidden" id="job-id">
         <div>
           <label class="block text-xs font-semibold text-slate-600 mb-1">공고명 *</label>
-          <input type="text" id="job-title" required class="w-full border rounded-lg p-2.5 text-sm outline-none focus:border-blue-600">
+          <input type="text" id="job-title" required class="w-full border rounded-lg p-2.5 text-sm outline-none focus:border-brand-blue">
         </div>
         <div class="grid grid-cols-2 gap-3">
           <div>
             <label class="block text-xs font-semibold text-slate-600 mb-1">시작일 *</label>
-            <input type="date" id="job-start" required class="w-full border rounded-lg p-2.5 text-sm outline-none focus:border-blue-600">
+            <input type="date" id="job-start" required class="w-full border rounded-lg p-2.5 text-sm outline-none focus:border-brand-blue">
           </div>
           <div>
             <label class="block text-xs font-semibold text-slate-600 mb-1">마감일 *</label>
-            <input type="date" id="job-end" required class="w-full border rounded-lg p-2.5 text-sm outline-none focus:border-blue-600">
+            <input type="date" id="job-end" required class="w-full border rounded-lg p-2.5 text-sm outline-none focus:border-brand-blue">
           </div>
         </div>
         <div>
           <label class="block text-xs font-semibold text-slate-600 mb-1">이력서 양식 파일 경로/링크</label>
-          <input type="text" id="job-resume" placeholder="./assets/resume_template.docx" class="w-full border rounded-lg p-2.5 text-sm outline-none focus:border-blue-600">
+          <input type="text" id="job-resume" placeholder="./assets/[위드헤브론] 표준입사지원서_2026.hwp" class="w-full border rounded-lg p-2.5 text-sm outline-none focus:border-brand-blue">
         </div>
         <div>
-          <label class="block text-xs font-semibold text-slate-600 mb-1">공고 상세설명</label>
-          <textarea id="job-desc" rows="3" class="w-full border rounded-lg p-2.5 text-sm outline-none focus:border-blue-600"></textarea>
+          <label class="block text-xs font-semibold text-slate-600 mb-1">공고 요약 설명</label>
+          <input type="text" id="job-desc" placeholder="헤브론의료원 방문/봉사 프로그램 기획 및 운영 지원" class="w-full border rounded-lg p-2.5 text-sm outline-none focus:border-brand-blue">
         </div>
         <div>
-          <label class="block text-xs font-semibold text-slate-600 mb-1">강제 상태 변경</label>
-          <select id="job-status" class="w-full border rounded-lg p-2.5 text-sm outline-none focus:border-blue-600">
+          <label class="block text-xs font-semibold text-slate-600 mb-1">상태 설정</label>
+          <select id="job-status" class="w-full border rounded-lg p-2.5 text-sm outline-none focus:border-brand-blue bg-white">
             <option value="AUTO">자동 (날짜 기반)</option>
             <option value="OPEN">진행 중 (강제)</option>
             <option value="CLOSED">마감 (강제)</option>
           </select>
         </div>
-        <div class="pt-2 flex justify-end space-x-2">
+        
+        <!-- 상세 내용 입력 (콤마 또는 줄바꿈 구분) -->
+        <div class="border-t pt-3 space-y-3">
+          <p class="text-xs font-bold text-brand-blue">📌 세부 항목 작성 (각 줄 단위로 구분됩니다)</p>
+          <div>
+            <label class="block text-[11px] font-semibold text-slate-500 mb-1">담당업무 (줄바꿈으로 구분)</label>
+            <textarea id="details-duties" rows="3" class="w-full border rounded-lg p-2 text-xs outline-none focus:border-brand-blue"></textarea>
+          </div>
+          <div>
+            <label class="block text-[11px] font-semibold text-slate-500 mb-1">자격요건 (줄바꿈으로 구분)</label>
+            <textarea id="details-reqs" rows="3" class="w-full border rounded-lg p-2 text-xs outline-none focus:border-brand-blue"></textarea>
+          </div>
+          <div>
+            <label class="block text-[11px] font-semibold text-slate-500 mb-1">우대사항 (줄바꿈으로 구분)</label>
+            <textarea id="details-prefs" rows="3" class="w-full border rounded-lg p-2 text-xs outline-none focus:border-brand-blue"></textarea>
+          </div>
+          <div>
+            <label class="block text-[11px] font-semibold text-slate-500 mb-1">근무조건 (줄바꿈으로 구분)</label>
+            <textarea id="details-conds" rows="3" class="w-full border rounded-lg p-2 text-xs outline-none focus:border-brand-blue"></textarea>
+          </div>
+          <div>
+            <label class="block text-[11px] font-semibold text-slate-500 mb-1">제출서류 (줄바꿈으로 구분)</label>
+            <textarea id="details-docs" rows="3" class="w-full border rounded-lg p-2 text-xs outline-none focus:border-brand-blue"></textarea>
+          </div>
+          <div>
+            <label class="block text-[11px] font-semibold text-slate-500 mb-1">전형일정 (줄바꿈으로 구분)</label>
+            <textarea id="details-sched" rows="3" class="w-full border rounded-lg p-2 text-xs outline-none focus:border-brand-blue"></textarea>
+          </div>
+        </div>
+
+        <div class="pt-3 flex justify-end space-x-2 border-t">
           <button type="button" onclick="closeForm()" class="px-4 py-2 border rounded-lg text-sm text-slate-600 hover:bg-slate-50">취소</button>
-          <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded-lg text-sm font-semibold hover:bg-blue-700">저장</button>
+          <button type="submit" class="px-5 py-2 bg-brand-blue text-white rounded-lg text-sm font-bold hover:opacity-90">저장</button>
         </div>
       </form>
     </div>
   </div>
+
+  <footer class="bg-white border-t py-6 text-center text-xs text-slate-400 mt-auto">
+    © WITHHEBRON. All rights reserved.
+  </footer>
 
   <script>
     let jobs = [];
 
     async function init() {
       try {
-        const res = await fetch('./jobs.json');
+        const res = await fetch('./jobs.json?v=' + new Date().getTime());
         jobs = await res.json();
+        localStorage.setItem('jobs_data', JSON.stringify(jobs));
       } catch (e) {
         jobs = JSON.parse(localStorage.getItem('jobs_data') || '[]');
       }
@@ -112,6 +205,8 @@
 
     function renderAdminList() {
       const tbody = document.getElementById('admin-job-list');
+      document.getElementById('job-count').innerText = `총 ${jobs.length}건`;
+
       if (jobs.length === 0) {
         tbody.innerHTML = `<tr><td colspan="4" class="p-6 text-center text-slate-400">등록된 공고가 없습니다.</td></tr>`;
         return;
@@ -120,17 +215,17 @@
       tbody.innerHTML = jobs.map(job => {
         const ongoing = isOngoing(job);
         const statusBadge = ongoing
-          ? `<span class="px-2 py-0.5 bg-emerald-100 text-emerald-700 rounded text-xs font-bold">[진행 중]</span>`
-          : `<span class="px-2 py-0.5 bg-slate-100 text-slate-500 rounded text-xs font-bold">[마감]</span>`;
+          ? `<span class="px-2.5 py-1 bg-emerald-100 text-emerald-800 rounded text-xs font-bold">[진행 중]</span>`
+          : `<span class="px-2.5 py-1 bg-slate-100 text-slate-500 rounded text-xs font-bold">[마감]</span>`;
 
         return `
-          <tr class="hover:bg-slate-50">
+          <tr class="hover:bg-slate-50/80 transition">
             <td class="p-4">${statusBadge}</td>
-            <td class="p-4 font-semibold text-slate-900">${job.title}</td>
+            <td class="p-4 font-myeongjo font-bold text-slate-900">${job.title}</td>
             <td class="p-4 text-xs text-slate-500">${job.startDate} ~ ${job.endDate}</td>
             <td class="p-4 text-right space-x-2">
-              <button onclick="editJob(${job.id})" class="text-blue-600 hover:underline text-xs font-semibold">수정</button>
-              <button onclick="deleteJob(${job.id})" class="text-red-600 hover:underline text-xs font-semibold">삭제</button>
+              <button onclick="editJob(${job.id})" class="text-brand-blue hover:underline text-xs font-bold">수정</button>
+              <button onclick="deleteJob(${job.id})" class="text-brand-red hover:underline text-xs font-bold">삭제</button>
             </td>
           </tr>
         `;
@@ -150,9 +245,21 @@
       document.getElementById('form-modal').classList.add('hidden');
     }
 
+    function splitLines(text) {
+      if (!text) return [];
+      return text.split('\n').map(s => s.trim()).filter(s => s.length > 0);
+    }
+
+    function joinLines(arr) {
+      if (!arr || !Array.isArray(arr)) return '';
+      return arr.join('\n');
+    }
+
     function editJob(id) {
       const job = jobs.find(j => j.id === id);
       if (!job) return;
+
+      const details = job.details || {};
 
       document.getElementById('form-title').innerText = '공고 수정';
       document.getElementById('job-id').value = job.id;
@@ -163,12 +270,20 @@
       document.getElementById('job-desc').value = job.description || '';
       document.getElementById('job-status').value = job.status || 'AUTO';
 
+      document.getElementById('details-duties').value = joinLines(details.duties);
+      document.getElementById('details-reqs').value = joinLines(details.requirements);
+      document.getElementById('details-prefs').value = joinLines(details.preferences);
+      document.getElementById('details-conds').value = joinLines(details.conditions);
+      document.getElementById('details-docs').value = joinLines(details.documents);
+      document.getElementById('details-sched').value = joinLines(details.schedule);
+
       document.getElementById('form-modal').classList.remove('hidden');
     }
 
     function saveJob(e) {
       e.preventDefault();
       const id = document.getElementById('job-id').value;
+
       const jobData = {
         id: id ? parseInt(id) : Date.now(),
         title: document.getElementById('job-title').value,
@@ -176,7 +291,15 @@
         endDate: document.getElementById('job-end').value,
         resumeUrl: document.getElementById('job-resume').value,
         description: document.getElementById('job-desc').value,
-        status: document.getElementById('job-status').value
+        status: document.getElementById('job-status').value,
+        details: {
+          duties: splitLines(document.getElementById('details-duties').value),
+          requirements: splitLines(document.getElementById('details-reqs').value),
+          preferences: splitLines(document.getElementById('details-prefs').value),
+          conditions: splitLines(document.getElementById('details-conds').value),
+          documents: splitLines(document.getElementById('details-docs').value),
+          schedule: splitLines(document.getElementById('details-sched').value)
+        }
       };
 
       if (id) {
@@ -205,7 +328,7 @@
       document.body.appendChild(downloadAnchor);
       downloadAnchor.click();
       downloadAnchor.remove();
-      alert("다운로드된 jobs.json 파일을 GitHub 저장소 루트에 덮어씌워 커밋(Commit)하세요!");
+      alert("다운로드된 jobs.json 파일을 GitHub 저장소 루트 폴더에 올리신 후 Commit 하세요!");
     }
 
     window.onload = init;

@@ -10,7 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&display=swap" rel="stylesheet">
   
   <!-- 파비콘 -->
-  <link rel="icon" type="image/png" href="./favicon.png">
+  <link rel="icon" type="image/png" href="./assets/WH-로고-하트.png">
 
   <script src="https://cdn.tailwindcss.com"></script>
 
@@ -34,7 +34,7 @@
 </head>
 <body class="bg-[#FBF9F5] text-slate-800 min-h-screen flex flex-col">
 
-  <!-- Header / Navigation (동일한 디자인 & 로고 적용) -->
+  <!-- Header / Navigation (assets 폴더 경로 반영) -->
   <header class="bg-white border-b border-slate-200 sticky top-0 z-40 shadow-sm">
     <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
       <div class="flex items-center space-x-3">
@@ -141,7 +141,7 @@
           </select>
         </div>
         
-        <!-- 상세 내용 입력 (콤마 또는 줄바꿈 구분) -->
+        <!-- 상세 내용 입력 (줄바꿈 단위 구분) -->
         <div class="border-t pt-3 space-y-3">
           <p class="text-xs font-bold text-brand-blue">📌 세부 항목 작성 (각 줄 단위로 구분됩니다)</p>
           <div>
@@ -187,7 +187,9 @@
 
     async function init() {
       try {
-        const res = await fetch('./jobs.json?v=' + new Date().getTime());
+        const cacheBuster = Math.floor(Date.now() / 60000);
+        const res = await fetch('./jobs.json?v=' + cacheBuster);
+        if (!res.ok) throw new Error('Response error');
         jobs = await res.json();
         localStorage.setItem('jobs_data', JSON.stringify(jobs));
       } catch (e) {

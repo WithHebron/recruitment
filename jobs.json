@@ -1,0 +1,11 @@
+[
+  {
+    "id": 1,
+    "title": "프론트엔드 개발자 채용",
+    "startDate": "2026-11-01",
+    "endDate": "2026-12-31",
+    "resumeUrl": "./assets/resume_template.docx",
+    "description": "React 및 파이썬 경험자를 찾습니다.",
+    "status": "AUTO"
+  }
+]

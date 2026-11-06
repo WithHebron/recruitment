@@ -24,63 +24,10 @@
   </header>
 
   <main class="flex-grow max-w-6xl w-full mx-auto px-6 py-10 space-y-16">
-    <!-- 회사소개 -->
-    <section id="about" class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm">
-      <h2 class="text-2xl font-bold text-slate-900 mb-4">회사소개</h2>
-      <p class="text-slate-600 leading-relaxed">위헤브론은 더 나은 가치를 창출하기 위해 도전하는 동반자입니다.</p>
-    </section>
-
-    <!-- 일하는 방식 -->
-    <section id="culture" class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm">
-      <h2 class="text-2xl font-bold text-slate-900 mb-4">일하는 방식</h2>
-      <ul class="space-y-2 text-slate-600 list-disc list-inside">
-        <li>자율과 책임에 기반한 수평적 소통</li>
-        <li>데이터에 기반한 신속한 결정</li>
-        <li>지속적인 성장을 위한 아낌없는 피드백</li>
-      </ul>
-    </section>
-
-    <!-- 복리후생 -->
-    <section id="benefits" class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm">
-      <h2 class="text-2xl font-bold text-slate-900 mb-4">복리후생</h2>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <div class="p-4 bg-slate-50 rounded-lg">
-          <div class="font-bold mb-1">🏖️ 자유로운 휴가</div>
-          <div class="text-xs text-slate-500">승인 없는 자유로운 연차 사용</div>
-        </div>
-        <div class="p-4 bg-slate-50 rounded-lg">
-          <div class="font-bold mb-1">💻 자기개발 지원</div>
-          <div class="text-xs text-slate-500">도서 및 교육비 전액 지원</div>
-        </div>
-        <div class="p-4 bg-slate-50 rounded-lg">
-          <div class="font-bold mb-1">☕ 고급 장비 지원</div>
-          <div class="text-xs text-slate-500">최신형 노트북 및 최적의 환경 제공</div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 팀소개(조직도) -->
-    <section id="team" class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm">
-      <h2 class="text-2xl font-bold text-slate-900 mb-4">팀소개 (조직도)</h2>
-      <div class="flex flex-wrap gap-4 text-center">
-        <div class="flex-1 min-w-[150px] p-4 bg-slate-100 rounded-lg">
-          <div class="font-semibold text-slate-800">대표이사</div>
-        </div>
-        <div class="flex-1 min-w-[150px] p-4 bg-blue-50 rounded-lg">
-          <div class="font-semibold text-blue-900">개발팀</div>
-        </div>
-        <div class="flex-1 min-w-[150px] p-4 bg-emerald-50 rounded-lg">
-          <div class="font-semibold text-emerald-900">기획/디자인팀</div>
-        </div>
-        <div class="flex-1 min-w-[150px] p-4 bg-purple-50 rounded-lg">
-          <div class="font-semibold text-purple-900">경영지원팀</div>
-        </div>
-      </div>
-    </section>
-
     <!-- 채용공고 목록 -->
     <section id="jobs" class="space-y-6">
       <h2 class="text-2xl font-bold text-slate-900">채용 공고</h2>
+      <p class="text-sm text-slate-500">공고 제목을 클릭하면 상세 내용(담당업무, 자격요건 등)을 확인하실 수 있습니다.</p>
       <div id="job-list" class="space-y-4">
         <div class="p-6 bg-white rounded-xl border border-slate-200 text-center text-slate-400">
           공고를 불러오는 중입니다...
@@ -89,12 +36,12 @@
     </section>
   </main>
 
-  <!-- 지원 모달 (파일 업로드 & 안내문구 포함) -->
+  <!-- 지원 모달 -->
   <div id="apply-modal" class="hidden fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-    <div class="bg-white rounded-2xl max-w-lg w-full p-6 space-y-4 shadow-xl">
+    <div class="bg-white rounded-2xl max-w-lg w-full p-6 space-y-4 shadow-xl max-h-[90vh] overflow-y-auto">
       <div class="flex justify-between items-center border-b pb-3">
         <h3 class="text-lg font-bold text-slate-900" id="modal-job-title">지원하기</h3>
-        <button onclick="closeModal()" class="text-slate-400 hover:text-slate-600">✕</button>
+        <button onclick="closeModal()" class="text-slate-400 hover:text-slate-600 text-lg">✕</button>
       </div>
       <form id="apply-form" onsubmit="handleApply(event)" class="space-y-3">
         <input type="hidden" id="apply-job-name">
@@ -110,22 +57,18 @@
           <label class="block text-xs font-semibold text-slate-600 mb-1">연락처 *</label>
           <input type="tel" id="applicant-phone" required class="w-full border rounded-lg p-2.5 text-sm outline-none focus:border-blue-600">
         </div>
-
-        <!-- 📁 파일 업로드 영역 및 안내 문구 -->
         <div>
           <label class="block text-xs font-semibold text-slate-600 mb-1">이력서/포트폴리오 파일 첨부</label>
           <input type="file" id="applicant-file" accept=".pdf,.doc,.docx,.zip,.hwp" class="w-full text-xs text-slate-500 border rounded-lg p-2 bg-slate-50 file:mr-3 file:py-1 file:px-3 file:rounded-md file:border-0 file:text-xs file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100">
           <p class="text-[11px] text-amber-600 mt-1.5 leading-tight">
-            ⚠️ <strong>파일 전송 안내:</strong> 웹 메일 시스템 특성상 파일은 <strong>50KB 이하</strong>만 전송 가능합니다.<br>
-            대용량 이력서나 포트폴리오는 아래 메모란에 <strong>Google Drive / Notion 링크</strong>를 남겨주시거나, 제출 후 <a href="mailto:people@withhebron.com" class="underline font-bold">people@withhebron.com</a>으로 직접 메일 발송해 주세요.
+            ⚠️ <strong>파일 전송 안내:</strong> 50KB 이하의 파일만 전송 가능합니다.<br>대용량 파일은 아래 메모란에 <strong>Drive / Notion 링크</strong>를 남겨주시거나 <a href="mailto:people@withhebron.com" class="underline font-bold">people@withhebron.com</a>으로 직접 보내주세요.
           </p>
         </div>
-
         <div>
-          <label class="block text-xs font-semibold text-slate-600 mb-1">자기소개 및 포트폴리오 링크</label>
+          <label class="block text-xs font-semibold text-slate-600 mb-1">자기소개 및 링크</label>
           <textarea id="applicant-message" rows="3" placeholder="Google Drive, Notion 링크 등을 남겨주세요." class="w-full border rounded-lg p-2.5 text-sm outline-none focus:border-blue-600"></textarea>
         </div>
-        <div class="pt-2 flex justify-end space-x-2">
+        <div class="pt-2 flex justify-end space-x-2 border-t">
           <button type="button" onclick="closeModal()" class="px-4 py-2 border rounded-lg text-sm text-slate-600 hover:bg-slate-50">취소</button>
           <button type="submit" id="submit-btn" class="px-4 py-2 bg-blue-600 text-white rounded-lg text-sm font-semibold hover:bg-blue-700">제출하기</button>
         </div>
@@ -138,17 +81,14 @@
   </footer>
 
   <script>
-    // EmailJS 설정 값
     const EMAILJS_PUBLIC_KEY = "qajnFSDmnZYjKnDtB"; 
     const EMAILJS_SERVICE_ID = "service_epsjsp3";
     const EMAILJS_TEMPLATE_ID = "template_4vv93ve";
 
-    // SDK 초기화
     emailjs.init(EMAILJS_PUBLIC_KEY);
 
     let jobs = [];
 
-    // 캐시 방지(?v=타임스탬프)를 통한 jobs.json 최신 로드
     async function loadJobs() {
       try {
         const res = await fetch('./jobs.json?v=' + new Date().getTime());
@@ -174,32 +114,73 @@
         return;
       }
 
-      container.innerHTML = jobs.map(job => {
+      container.innerHTML = jobs.map((job, idx) => {
         const ongoing = isOngoing(job);
         const statusBadge = ongoing
           ? `<span class="px-2.5 py-1 bg-emerald-100 text-emerald-700 font-bold rounded-md text-xs">[진행 중]</span>`
           : `<span class="px-2.5 py-1 bg-slate-100 text-slate-500 font-bold rounded-md text-xs">[마감]</span>`;
 
+        const details = job.details || {};
+
         return `
-          <div class="p-6 bg-white rounded-xl border border-slate-200 flex flex-col md:flex-row md:items-center justify-between gap-4 shadow-sm">
-            <div class="space-y-2">
-              <div class="flex items-center space-x-2">
-                ${statusBadge}
-                <h3 class="text-lg font-bold text-slate-900">${job.title}</h3>
+          <div class="bg-white rounded-xl border border-slate-200 overflow-hidden shadow-sm transition">
+            <!-- 공고 카드 헤더 (클릭 시 아코디언 토글) -->
+            <div class="p-6 flex flex-col md:flex-row md:items-center justify-between gap-4 cursor-pointer hover:bg-slate-50/80 transition" onclick="toggleDetails(${idx})">
+              <div class="space-y-1">
+                <div class="flex items-center space-x-2">
+                  ${statusBadge}
+                  <h3 class="text-lg font-bold text-slate-900 hover:text-blue-600 transition flex items-center gap-1">
+                    ${job.title}
+                    <span id="arrow-${idx}" class="text-xs text-slate-400 ml-1 transition-transform">▼</span>
+                  </h3>
+                </div>
+                <p class="text-xs text-slate-500">모집기간: ${job.startDate} ~ ${job.endDate}</p>
               </div>
-              <p class="text-xs text-slate-500">모집기간: ${job.startDate} ~ ${job.endDate}</p>
-              <p class="text-sm text-slate-600">${job.description || ''}</p>
+              <div class="flex items-center space-x-2" onclick="event.stopPropagation()">
+                ${job.resumeUrl ? `<a href="${job.resumeUrl}" download class="px-3 py-2 border text-slate-600 rounded-lg text-xs font-semibold hover:bg-slate-100">양식 다운로드</a>` : ''}
+                ${ongoing 
+                  ? `<button onclick="openModal('${job.title}')" class="px-4 py-2 bg-blue-600 text-white rounded-lg text-xs font-semibold hover:bg-blue-700">지원하기</button>`
+                  : `<button disabled class="px-4 py-2 bg-slate-100 text-slate-400 rounded-lg text-xs font-semibold cursor-not-allowed">마감됨</button>`
+                }
+              </div>
             </div>
-            <div class="flex items-center space-x-2">
-              ${job.resumeUrl ? `<a href="${job.resumeUrl}" download class="px-3 py-2 border text-slate-600 rounded-lg text-xs font-semibold hover:bg-slate-50">양식 다운로드</a>` : ''}
-              ${ongoing 
-                ? `<button onclick="openModal('${job.title}')" class="px-4 py-2 bg-blue-600 text-white rounded-lg text-xs font-semibold hover:bg-blue-700">지원하기</button>`
-                : `<button disabled class="px-4 py-2 bg-slate-100 text-slate-400 rounded-lg text-xs font-semibold cursor-not-allowed">마감됨</button>`
-              }
+
+            <!-- 공고 상세정보 영역 (아코디언 형태) -->
+            <div id="details-${idx}" class="hidden border-t border-slate-100 bg-slate-50/50 p-6 space-y-6 text-sm text-slate-700">
+              ${renderDetailSection("📋 담당업무", details.duties)}
+              ${renderDetailSection("✅ 자격요건 (필수)", details.requirements)}
+              ${renderDetailSection("🌟 우대사항", details.preferences)}
+              ${renderDetailSection("📍 근무조건", details.conditions)}
+              ${renderDetailSection("📄 제출서류", details.documents)}
+              ${renderDetailSection("📅 전형일정", details.schedule)}
             </div>
           </div>
         `;
       }).join('');
+    }
+
+    function renderDetailSection(title, list) {
+      if (!list || list.length === 0) return '';
+      return `
+        <div class="space-y-2">
+          <h4 class="font-bold text-slate-900 text-sm border-b pb-1 border-slate-200">${title}</h4>
+          <ul class="list-disc list-inside space-y-1 pl-1 text-slate-600 text-xs md:text-sm">
+            ${list.map(item => `<li>${item}</li>`).join('')}
+          </ul>
+        </div>
+      `;
+    }
+
+    function toggleDetails(index) {
+      const detailEl = document.getElementById(`details-${index}`);
+      const arrowEl = document.getElementById(`arrow-${index}`);
+      if (detailEl.classList.contains('hidden')) {
+        detailEl.classList.remove('hidden');
+        arrowEl.style.transform = 'rotate(180deg)';
+      } else {
+        detailEl.classList.add('hidden');
+        arrowEl.style.transform = 'rotate(0deg)';
+      }
     }
 
     function openModal(title) {
@@ -213,7 +194,6 @@
       document.getElementById('apply-form').reset();
     }
 
-    // 파일 데이터를 Base64 문자열로 읽는 도우미 함수
     function readFileAsBase64(file) {
       return new Promise((resolve, reject) => {
         const reader = new FileReader();
@@ -255,7 +235,7 @@
         applicant_email: email,
         applicant_phone: phone,
         applicant_message: message,
-        content: fileBase64,  // EmailJS Attachments에 매핑
+        content: fileBase64,
         file_name: fileName,
         to_email: 'people@withhebron.com'
       };
@@ -267,7 +247,7 @@
         })
         .catch((error) => {
           console.error("EmailJS Error:", error);
-          alert("파일 용량이 크거나 메일 발송 중 오류가 발생했습니다. 기본 메일 앱으로 연동합니다.");
+          alert("오류가 발생하여 기본 메일 앱으로 연동합니다.");
           openMailto(jobTitle, name, email, phone, message);
         })
         .finally(() => {

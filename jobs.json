@@ -7,5 +7,14 @@
     "resumeUrl": "./assets/resume_template.docx",
     "description": "React 및 파이썬 경험자를 찾습니다.",
     "status": "AUTO"
+  },
+  {
+    "id": 1793950148648,
+    "title": "테스트",
+    "startDate": "2026-11-05",
+    "endDate": "2026-11-13",
+    "resumeUrl": "",
+    "description": "",
+    "status": "AUTO"
   }
 ]

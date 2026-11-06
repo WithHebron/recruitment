@@ -3,89 +3,135 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>채용 안내 | 위헤브론</title>
-
-  <!-- 💡 파비콘 적용 코드 (PNG 이미지인 경우) -->
-  <link rel="icon" type="image/png" href="./favicon.png">
+  <title>채용 안내 | 위드헤브론</title>
   
+  <!-- 폰트 로드: 나눔명조(이미지 폰트) & Pretendard -->
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&display=swap" rel="stylesheet">
+  
+  <!-- 파비콘 (PNG 사용 시) -->
+  <link rel="icon" type="image/png" href="./favicon.png">
+
   <script src="https://cdn.tailwindcss.com"></script>
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-</head>
-<body class="bg-slate-50 text-slate-800 flex flex-col min-h-screen">
 
-  <!-- Header / Navigation -->
-  <header class="bg-white border-b border-slate-200 sticky top-0 z-40">
-    <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-      <div class="text-xl font-bold text-slate-900 tracking-tight">WITHHEBRON</div>
-      <nav class="hidden md:flex space-x-8 text-sm font-semibold text-slate-600">
-        <a href="#about" class="hover:text-blue-600 transition">회사소개</a>
-        <a href="#culture" class="hover:text-blue-600 transition">일하는 방식</a>
-        <a href="#benefits" class="hover:text-blue-600 transition">복리후생</a>
-        <a href="#team" class="hover:text-blue-600 transition">팀소개(조직도)</a>
-        <a href="#jobs" class="hover:text-blue-600 transition text-blue-600">채용공고</a>
+  <style>
+    body {
+      font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+    }
+    .font-myeongjo {
+      font-family: 'Nanum Myeongjo', serif;
+    }
+    /* 로고 브랜드 컬러 정의 */
+    .bg-brand-red { background-color: #E5254E; }
+    .text-brand-red { color: #E5254E; }
+    .bg-brand-blue { background-color: #00B5EC; }
+    .text-brand-blue { color: #00B5EC; }
+    .bg-brand-yellow { background-color: #F5C827; }
+    .text-brand-yellow { color: #F5C827; }
+    .bg-brand-green { background-color: #68B04D; }
+    .text-brand-green { color: #68B04D; }
+    .bg-dark-green { background-color: #0E352E; }
+  </style>
+</head>
+<body class="bg-[#FBF9F5] text-slate-800 flex flex-col min-h-screen">
+
+  <!-- Header / Navigation (투명 로고 적용) -->
+  <header class="bg-white border-b border-slate-200 sticky top-0 z-40 shadow-sm">
+    <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
+      <a href="#" class="flex items-center space-x-3">
+        <img src="./로고_투명.png" alt="WithHebron Logo" class="h-12 w-auto object-contain" onerror="this.src='./WH-로고-십자가.png'; this.className='h-9';">
+      </a>
+      <nav class="hidden md:flex space-x-8 text-sm font-semibold text-slate-700">
+        <a href="#about" class="hover:text-brand-blue transition">회사소개</a>
+        <a href="#culture" class="hover:text-brand-blue transition">일하는 방식</a>
+        <a href="#benefits" class="hover:text-brand-blue transition">복리후생</a>
+        <a href="#team" class="hover:text-brand-blue transition">팀소개(조직도)</a>
+        <a href="#jobs" class="hover:text-brand-blue transition text-brand-blue font-bold">채용공고</a>
       </nav>
     </div>
   </header>
 
-  <main class="flex-grow max-w-6xl w-full mx-auto px-6 py-10 space-y-16">
+  <!-- 메인 히어로 배너 (이미지 스타일 딥그린 배경 & 나눔명조 타이틀) -->
+  <section class="bg-dark-green text-white py-14 px-6 text-center space-y-4 shadow-inner">
+    <div class="inline-block bg-brand-yellow text-slate-900 text-xs font-bold px-4 py-1.5 rounded-full shadow-sm">
+      위드헤브론 채용 리포트
+    </div>
+    <h1 class="font-myeongjo text-2xl md:text-4xl font-bold leading-relaxed tracking-tight">
+      한국에서 전한 마음, <br class="md:hidden">캄보디아에서 피어난 감사 <span class="inline-block animate-bounce">💖</span>
+    </h1>
+    <p class="text-xs md:text-sm text-slate-200 max-w-2xl mx-auto font-light leading-relaxed">
+      위드헤브론과 함께 캄보디아 현장의 환우와 의료진에게 희망을 전할 동반자를 기다립니다.
+    </p>
+  </section>
+
+  <main class="flex-grow max-w-6xl w-full mx-auto px-6 py-12 space-y-16">
     <!-- 1. 회사소개 -->
-    <section id="about" class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm">
-      <h2 class="text-2xl font-bold text-slate-900 mb-4">회사소개</h2>
-      <p class="text-slate-600 leading-relaxed">위헤브론은 더 나은 가치를 창출하기 위해 도전하는 동반자입니다.</p>
+    <section id="about" class="bg-white p-8 rounded-2xl border border-amber-100 shadow-sm relative overflow-hidden">
+      <div class="absolute -right-4 -bottom-4 opacity-10 pointer-events-none">
+        <img src="./WH-로고-하트.png" class="w-40">
+      </div>
+      <h2 class="font-myeongjo text-2xl font-bold text-slate-900 mb-4 flex items-center gap-2">
+        <img src="./WH-로고-하트.png" class="w-6 h-6 object-contain"> 회사소개
+      </h2>
+      <p class="text-slate-600 leading-relaxed">
+        남겨주신 따뜻한 기도와 응원이 캄보디아 현장의 환우와 의료진에게 전달되어 큰 위로와 소망이 되었습니다. <br>
+        위드헤브론은 더 나은 가치를 창출하기 위해 현장에서 함께 도전하는 동반자입니다.
+      </p>
     </section>
 
     <!-- 2. 일하는 방식 -->
-    <section id="culture" class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm">
-      <h2 class="text-2xl font-bold text-slate-900 mb-4">일하는 방식</h2>
-      <ul class="space-y-2 text-slate-600 list-disc list-inside">
-        <li>자율과 책임에 기반한 수평적 소통</li>
-        <li>데이터에 기반한 신속한 결정</li>
-        <li>지속적인 성장을 위한 아낌없는 피드백</li>
+    <section id="culture" class="bg-white p-8 rounded-2xl border border-amber-100 shadow-sm">
+      <h2 class="font-myeongjo text-2xl font-bold text-slate-900 mb-4 flex items-center gap-2">
+        <img src="./WH-로고-화살표.png" class="w-6 h-6 object-contain"> 일하는 방식
+      </h2>
+      <ul class="space-y-3 text-slate-600 list-none">
+        <li class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-brand-red"></span> 자율과 책임에 기반한 수평적 소통</li>
+        <li class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-brand-blue"></span> 데이터에 기반한 신속한 결정</li>
+        <li class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-brand-green"></span> 지속적인 성장을 위한 아낌없는 피드백</li>
       </ul>
     </section>
 
     <!-- 3. 복리후생 -->
-    <section id="benefits" class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm">
-      <h2 class="text-2xl font-bold text-slate-900 mb-4">복리후생</h2>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <div class="p-4 bg-slate-50 rounded-lg">
-          <div class="font-bold mb-1">🏖️ 자유로운 휴가</div>
+    <section id="benefits" class="bg-white p-8 rounded-2xl border border-amber-100 shadow-sm">
+      <h2 class="font-myeongjo text-2xl font-bold text-slate-900 mb-6 flex items-center gap-2">
+        <img src="./WH-로고-동그라미.png" class="w-6 h-6 object-contain"> 복리후생
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+        <div class="p-5 bg-[#FDFBF7] rounded-xl border border-amber-200/60">
+          <div class="font-bold mb-1 text-slate-900">🏖️ 자유로운 휴가</div>
           <div class="text-xs text-slate-500">승인 없는 자유로운 연차 사용</div>
         </div>
-        <div class="p-4 bg-slate-50 rounded-lg">
-          <div class="font-bold mb-1">💻 자기개발 지원</div>
+        <div class="p-5 bg-[#FDFBF7] rounded-xl border border-amber-200/60">
+          <div class="font-bold mb-1 text-slate-900">💻 자기개발 지원</div>
           <div class="text-xs text-slate-500">도서 및 교육비 전액 지원</div>
         </div>
-        <div class="p-4 bg-slate-50 rounded-lg">
-          <div class="font-bold mb-1">☕ 고급 장비 지원</div>
+        <div class="p-5 bg-[#FDFBF7] rounded-xl border border-amber-200/60">
+          <div class="font-bold mb-1 text-slate-900">☕ 고급 장비 지원</div>
           <div class="text-xs text-slate-500">최신형 노트북 및 최적의 환경 제공</div>
         </div>
       </div>
     </section>
 
     <!-- 4. 팀소개(조직도) -->
-    <section id="team" class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm">
-      <h2 class="text-2xl font-bold text-slate-900 mb-4">팀소개 (조직도)</h2>
+    <section id="team" class="bg-white p-8 rounded-2xl border border-amber-100 shadow-sm">
+      <h2 class="font-myeongjo text-2xl font-bold text-slate-900 mb-6 flex items-center gap-2">
+        <img src="./WH-로고-십자가.png" class="w-6 h-6 object-contain"> 팀소개 (조직도)
+      </h2>
       <div class="flex flex-wrap gap-4 text-center">
-        <div class="flex-1 min-w-[150px] p-4 bg-slate-100 rounded-lg">
-          <div class="font-semibold text-slate-800">대표이사</div>
-        </div>
-        <div class="flex-1 min-w-[150px] p-4 bg-blue-50 rounded-lg">
-          <div class="font-semibold text-blue-900">개발팀</div>
-        </div>
-        <div class="flex-1 min-w-[150px] p-4 bg-emerald-50 rounded-lg">
-          <div class="font-semibold text-emerald-900">기획/디자인팀</div>
-        </div>
-        <div class="flex-1 min-w-[150px] p-4 bg-purple-50 rounded-lg">
-          <div class="font-semibold text-purple-900">경영지원팀</div>
-        </div>
+        <div class="flex-1 min-w-[140px] p-4 bg-slate-100 rounded-xl font-semibold text-slate-800">대표이사</div>
+        <div class="flex-1 min-w-[140px] p-4 bg-sky-50 text-brand-blue border border-sky-100 rounded-xl font-semibold">개발팀</div>
+        <div class="flex-1 min-w-[140px] p-4 bg-emerald-50 text-brand-green border border-emerald-100 rounded-xl font-semibold">기획/디자인팀</div>
+        <div class="flex-1 min-w-[140px] p-4 bg-rose-50 text-brand-red border border-rose-100 rounded-xl font-semibold">경영지원팀</div>
       </div>
     </section>
 
     <!-- 5. 채용공고 목록 -->
     <section id="jobs" class="space-y-6">
-      <h2 class="text-2xl font-bold text-slate-900">채용 공고</h2>
-      <p class="text-sm text-slate-500">공고 제목을 클릭하시면 상세 내용(담당업무, 자격요건 등)을 확인하실 수 있습니다.</p>
+      <div class="flex items-center justify-between">
+        <h2 class="font-myeongjo text-2xl font-bold text-slate-900">채용 공고</h2>
+        <span class="text-xs text-slate-400">제목 클릭 시 세부내용 확인</span>
+      </div>
       <div id="job-list" class="space-y-4">
         <div class="p-6 bg-white rounded-xl border border-slate-200 text-center text-slate-400">
           공고를 불러오는 중입니다...
@@ -94,45 +140,46 @@
     </section>
   </main>
 
-  <!-- 지원 모달 -->
-  <div id="apply-modal" class="hidden fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-    <div class="bg-white rounded-2xl max-w-lg w-full p-6 space-y-4 shadow-xl max-h-[90vh] overflow-y-auto">
+  <!-- 지원 모달 (로고 컬러 적용) -->
+  <div id="apply-modal" class="hidden fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl max-w-lg w-full p-6 space-y-4 shadow-2xl max-h-[90vh] overflow-y-auto">
       <div class="flex justify-between items-center border-b pb-3">
-        <h3 class="text-lg font-bold text-slate-900" id="modal-job-title">지원하기</h3>
+        <h3 class="font-myeongjo text-lg font-bold text-slate-900 flex items-center gap-2" id="modal-job-title">
+          <img src="./WH-로고-하트.png" class="w-5 h-5"> 지원하기
+        </h3>
         <button onclick="closeModal()" class="text-slate-400 hover:text-slate-600 text-lg">✕</button>
       </div>
       <form id="apply-form" onsubmit="handleApply(event)" class="space-y-3">
         <input type="hidden" id="apply-job-name">
         <div>
           <label class="block text-xs font-semibold text-slate-600 mb-1">지원자 이름 *</label>
-          <input type="text" id="applicant-name" required class="w-full border rounded-lg p-2.5 text-sm outline-none focus:border-blue-600">
+          <input type="text" id="applicant-name" required class="w-full border rounded-lg p-2.5 text-sm outline-none focus:border-brand-blue">
         </div>
         <div>
           <label class="block text-xs font-semibold text-slate-600 mb-1">이메일 주소 *</label>
-          <input type="email" id="applicant-email" required class="w-full border rounded-lg p-2.5 text-sm outline-none focus:border-blue-600">
+          <input type="email" id="applicant-email" required class="w-full border rounded-lg p-2.5 text-sm outline-none focus:border-brand-blue">
         </div>
         <div>
           <label class="block text-xs font-semibold text-slate-600 mb-1">연락처 *</label>
-          <input type="tel" id="applicant-phone" required class="w-full border rounded-lg p-2.5 text-sm outline-none focus:border-blue-600">
+          <input type="tel" id="applicant-phone" required class="w-full border rounded-lg p-2.5 text-sm outline-none focus:border-brand-blue">
         </div>
 
-        <!-- 파일 첨부 (용량 제한 체크 적용) -->
         <div>
           <label class="block text-xs font-semibold text-slate-600 mb-1">이력서/포트폴리오 파일 첨부 (선택)</label>
-          <input type="file" id="applicant-file" onchange="checkFileSize(this)" accept=".pdf,.doc,.docx,.zip,.hwp" class="w-full text-xs text-slate-500 border rounded-lg p-2 bg-slate-50 file:mr-3 file:py-1 file:px-3 file:rounded-md file:border-0 file:text-xs file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100">
-          <p class="text-[11px] text-amber-600 mt-1.5 leading-tight">
-            ⚠️ <strong>파일 전송 안내:</strong> 시스템상 <strong>50KB 이하</strong> 소형 파일만 직접 첨부 전송이 가능합니다.<br>
-            용량이 큰 PDF/DOCX 파일이나 포트폴리오는 아래 메모란에 <strong>Drive / Notion 링크</strong>를 남겨주시거나 <a href="mailto:people@withhebron.com" class="underline font-bold">people@withhebron.com</a>으로 직접 전송해 주세요.
+          <input type="file" id="applicant-file" onchange="checkFileSize(this)" accept=".pdf,.doc,.docx,.zip,.hwp" class="w-full text-xs text-slate-500 border rounded-lg p-2 bg-slate-50 file:mr-3 file:py-1 file:px-3 file:rounded-md file:border-0 file:text-xs file:font-semibold file:bg-sky-50 file:text-brand-blue hover:file:bg-sky-100">
+          <p class="text-[11px] text-amber-700 mt-1.5 leading-tight bg-amber-50 p-2 rounded border border-amber-200">
+            ⚠️ <strong>파일 전송 안내:</strong> <strong>50KB 이하</strong> 소형 파일만 수신 가능합니다.<br>
+            대용량 PDF/DOCX는 메모란의 <strong>Drive / Notion 링크</strong>나 <a href="mailto:people@withhebron.com" class="underline font-bold text-brand-red">people@withhebron.com</a>으로 직접 보내주세요.
           </p>
         </div>
 
         <div>
           <label class="block text-xs font-semibold text-slate-600 mb-1">자기소개 및 링크</label>
-          <textarea id="applicant-message" rows="3" placeholder="Google Drive, Notion 링크 등을 남겨주세요." class="w-full border rounded-lg p-2.5 text-sm outline-none focus:border-blue-600"></textarea>
+          <textarea id="applicant-message" rows="3" placeholder="Google Drive, Notion 링크 등을 남겨주세요." class="w-full border rounded-lg p-2.5 text-sm outline-none focus:border-brand-blue"></textarea>
         </div>
-        <div class="pt-2 flex justify-end space-x-2 border-t">
+        <div class="pt-3 flex justify-end space-x-2 border-t">
           <button type="button" onclick="closeModal()" class="px-4 py-2 border rounded-lg text-sm text-slate-600 hover:bg-slate-50">취소</button>
-          <button type="submit" id="submit-btn" class="px-4 py-2 bg-blue-600 text-white rounded-lg text-sm font-semibold hover:bg-blue-700">제출하기</button>
+          <button type="submit" id="submit-btn" class="px-5 py-2 bg-brand-blue text-white rounded-lg text-sm font-bold shadow hover:opacity-90">제출하기</button>
         </div>
       </form>
     </div>
@@ -179,18 +226,18 @@
       container.innerHTML = jobs.map((job, idx) => {
         const ongoing = isOngoing(job);
         const statusBadge = ongoing
-          ? `<span class="px-2.5 py-1 bg-emerald-100 text-emerald-700 font-bold rounded-md text-xs">[진행 중]</span>`
+          ? `<span class="px-2.5 py-1 bg-emerald-100 text-emerald-800 font-bold rounded-md text-xs">[진행 중]</span>`
           : `<span class="px-2.5 py-1 bg-slate-100 text-slate-500 font-bold rounded-md text-xs">[마감]</span>`;
 
         const details = job.details || {};
 
         return `
-          <div class="bg-white rounded-xl border border-slate-200 overflow-hidden shadow-sm transition">
+          <div class="bg-white rounded-xl border border-amber-100 overflow-hidden shadow-sm hover:shadow transition">
             <div class="p-6 flex flex-col md:flex-row md:items-center justify-between gap-4 cursor-pointer hover:bg-slate-50/80 transition" onclick="toggleDetails(${idx})">
               <div class="space-y-1">
                 <div class="flex items-center space-x-2">
                   ${statusBadge}
-                  <h3 class="text-lg font-bold text-slate-900 hover:text-blue-600 transition flex items-center gap-1">
+                  <h3 class="font-myeongjo text-lg font-bold text-slate-900 hover:text-brand-blue transition flex items-center gap-1">
                     ${job.title}
                     <span id="arrow-${idx}" class="text-xs text-slate-400 ml-1 transition-transform">▼</span>
                   </h3>
@@ -198,15 +245,15 @@
                 <p class="text-xs text-slate-500">모집기간: ${job.startDate} ~ ${job.endDate}</p>
               </div>
               <div class="flex items-center space-x-2" onclick="event.stopPropagation()">
-                ${job.resumeUrl ? `<a href="${job.resumeUrl}" download class="px-3 py-2 border text-slate-600 rounded-lg text-xs font-semibold hover:bg-slate-100">양식 다운로드</a>` : ''}
+                ${job.resumeUrl ? `<a href="${job.resumeUrl}" download class="px-3 py-2 border text-slate-700 rounded-lg text-xs font-semibold hover:bg-slate-100">양식 다운로드</a>` : ''}
                 ${ongoing 
-                  ? `<button onclick="openModal('${job.title}')" class="px-4 py-2 bg-blue-600 text-white rounded-lg text-xs font-semibold hover:bg-blue-700">지원하기</button>`
+                  ? `<button onclick="openModal('${job.title}')" class="px-4 py-2 bg-brand-blue text-white rounded-lg text-xs font-bold hover:opacity-90 shadow-sm">지원하기</button>`
                   : `<button disabled class="px-4 py-2 bg-slate-100 text-slate-400 rounded-lg text-xs font-semibold cursor-not-allowed">마감됨</button>`
                 }
               </div>
             </div>
 
-            <div id="details-${idx}" class="hidden border-t border-slate-100 bg-slate-50/50 p-6 space-y-6 text-sm text-slate-700">
+            <div id="details-${idx}" class="hidden border-t border-slate-100 bg-[#FAF8F5] p-6 space-y-6 text-sm text-slate-700">
               ${renderDetailSection("📋 담당업무", details.duties)}
               ${renderDetailSection("✅ 자격요건 (필수)", details.requirements)}
               ${renderDetailSection("🌟 우대사항", details.preferences)}
@@ -223,7 +270,7 @@
       if (!list || list.length === 0) return '';
       return `
         <div class="space-y-2">
-          <h4 class="font-bold text-slate-900 text-sm border-b pb-1 border-slate-200">${title}</h4>
+          <h4 class="font-myeongjo font-bold text-slate-900 text-sm border-b pb-1 border-slate-200">${title}</h4>
           <ul class="list-disc list-inside space-y-1 pl-1 text-slate-600 text-xs md:text-sm">
             ${list.map(item => `<li>${item}</li>`).join('')}
           </ul>
@@ -254,12 +301,11 @@
       document.getElementById('apply-form').reset();
     }
 
-    // 파일 용량 검사 함수 (50KB 제한)
     function checkFileSize(input) {
       if (input.files.length > 0) {
-        const fileSize = input.files[0].size / 1024; // KB 단위 변환
+        const fileSize = input.files[0].size / 1024;
         if (fileSize > 50) {
-          alert("첨부하신 파일 용량이 " + Math.round(fileSize) + "KB 입니다.\nEmailJS 전송 제한(50KB)을 초과하므로 파일이 해제됩니다.\n\n대용량 이력서는 메모란의 링크나 이메일로 별도 제출해 주시기 바랍니다.");
+          alert("첨부하신 파일 용량이 " + Math.round(fileSize) + "KB 입니다.\nEmailJS 제한(50KB)을 초과하므로 파일이 해제됩니다.\n\n대용량 이력서는 메모란 링크나 메일로 첨부 부탁드립니다.");
           input.value = "";
         }
       }

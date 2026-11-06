@@ -3,7 +3,7 @@
     "id": 1,
     "title": "프론트엔드 개발자 채용",
     "startDate": "2026-11-01",
-    "endDate": "2026-12-31",
+    "endDate": "2026-11-05",
     "resumeUrl": "./assets/resume_template.docx",
     "description": "React 및 파이썬 경험자를 찾습니다.",
     "status": "AUTO"
@@ -13,7 +13,7 @@
     "title": "테스트",
     "startDate": "2026-11-05",
     "endDate": "2026-11-13",
-    "resumeUrl": "",
+    "resumeUrl": "./assets/[위드헤브론] 표준입사지원서_2026.hwp",
     "description": "",
     "status": "AUTO"
   }

@@ -24,10 +24,64 @@
   </header>
 
   <main class="flex-grow max-w-6xl w-full mx-auto px-6 py-10 space-y-16">
-    <!-- 채용공고 목록 -->
+    <!-- 1. 회사소개 -->
+    <section id="about" class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm">
+      <h2 class="text-2xl font-bold text-slate-900 mb-4">회사소개</h2>
+      <p class="text-slate-600 leading-relaxed">위헤브론은 더 나은 가치를 창출하기 위해 도전하는 동반자입니다.</p>
+    </section>
+
+    <!-- 2. 일하는 방식 -->
+    <section id="culture" class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm">
+      <h2 class="text-2xl font-bold text-slate-900 mb-4">일하는 방식</h2>
+      <ul class="space-y-2 text-slate-600 list-disc list-inside">
+        <li>자율과 책임에 기반한 수평적 소통</li>
+        <li>데이터에 기반한 신속한 결정</li>
+        <li>지속적인 성장을 위한 아낌없는 피드백</li>
+      </ul>
+    </section>
+
+    <!-- 3. 복리후생 -->
+    <section id="benefits" class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm">
+      <h2 class="text-2xl font-bold text-slate-900 mb-4">복리후생</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div class="p-4 bg-slate-50 rounded-lg">
+          <div class="font-bold mb-1">🏖️ 자유로운 휴가</div>
+          <div class="text-xs text-slate-500">승인 없는 자유로운 연차 사용</div>
+        </div>
+        <div class="p-4 bg-slate-50 rounded-lg">
+          <div class="font-bold mb-1">💻 자기개발 지원</div>
+          <div class="text-xs text-slate-500">도서 및 교육비 전액 지원</div>
+        </div>
+        <div class="p-4 bg-slate-50 rounded-lg">
+          <div class="font-bold mb-1">☕ 고급 장비 지원</div>
+          <div class="text-xs text-slate-500">최신형 노트북 및 최적의 환경 제공</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. 팀소개(조직도) -->
+    <section id="team" class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm">
+      <h2 class="text-2xl font-bold text-slate-900 mb-4">팀소개 (조직도)</h2>
+      <div class="flex flex-wrap gap-4 text-center">
+        <div class="flex-1 min-w-[150px] p-4 bg-slate-100 rounded-lg">
+          <div class="font-semibold text-slate-800">대표이사</div>
+        </div>
+        <div class="flex-1 min-w-[150px] p-4 bg-blue-50 rounded-lg">
+          <div class="font-semibold text-blue-900">개발팀</div>
+        </div>
+        <div class="flex-1 min-w-[150px] p-4 bg-emerald-50 rounded-lg">
+          <div class="font-semibold text-emerald-900">기획/디자인팀</div>
+        </div>
+        <div class="flex-1 min-w-[150px] p-4 bg-purple-50 rounded-lg">
+          <div class="font-semibold text-purple-900">경영지원팀</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. 채용공고 목록 -->
     <section id="jobs" class="space-y-6">
       <h2 class="text-2xl font-bold text-slate-900">채용 공고</h2>
-      <p class="text-sm text-slate-500">공고 제목을 클릭하면 상세 내용(담당업무, 자격요건 등)을 확인하실 수 있습니다.</p>
+      <p class="text-sm text-slate-500">공고 제목을 클릭하시면 상세 내용(담당업무, 자격요건 등)을 확인하실 수 있습니다.</p>
       <div id="job-list" class="space-y-4">
         <div class="p-6 bg-white rounded-xl border border-slate-200 text-center text-slate-400">
           공고를 불러오는 중입니다...
@@ -57,13 +111,17 @@
           <label class="block text-xs font-semibold text-slate-600 mb-1">연락처 *</label>
           <input type="tel" id="applicant-phone" required class="w-full border rounded-lg p-2.5 text-sm outline-none focus:border-blue-600">
         </div>
+
+        <!-- 파일 첨부 (용량 제한 체크 적용) -->
         <div>
-          <label class="block text-xs font-semibold text-slate-600 mb-1">이력서/포트폴리오 파일 첨부</label>
-          <input type="file" id="applicant-file" accept=".pdf,.doc,.docx,.zip,.hwp" class="w-full text-xs text-slate-500 border rounded-lg p-2 bg-slate-50 file:mr-3 file:py-1 file:px-3 file:rounded-md file:border-0 file:text-xs file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100">
+          <label class="block text-xs font-semibold text-slate-600 mb-1">이력서/포트폴리오 파일 첨부 (선택)</label>
+          <input type="file" id="applicant-file" onchange="checkFileSize(this)" accept=".pdf,.doc,.docx,.zip,.hwp" class="w-full text-xs text-slate-500 border rounded-lg p-2 bg-slate-50 file:mr-3 file:py-1 file:px-3 file:rounded-md file:border-0 file:text-xs file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100">
           <p class="text-[11px] text-amber-600 mt-1.5 leading-tight">
-            ⚠️ <strong>파일 전송 안내:</strong> 50KB 이하의 파일만 전송 가능합니다.<br>대용량 파일은 아래 메모란에 <strong>Drive / Notion 링크</strong>를 남겨주시거나 <a href="mailto:people@withhebron.com" class="underline font-bold">people@withhebron.com</a>으로 직접 보내주세요.
+            ⚠️ <strong>파일 전송 안내:</strong> 시스템상 <strong>50KB 이하</strong> 소형 파일만 직접 첨부 전송이 가능합니다.<br>
+            용량이 큰 PDF/DOCX 파일이나 포트폴리오는 아래 메모란에 <strong>Drive / Notion 링크</strong>를 남겨주시거나 <a href="mailto:people@withhebron.com" class="underline font-bold">people@withhebron.com</a>으로 직접 전송해 주세요.
           </p>
         </div>
+
         <div>
           <label class="block text-xs font-semibold text-slate-600 mb-1">자기소개 및 링크</label>
           <textarea id="applicant-message" rows="3" placeholder="Google Drive, Notion 링크 등을 남겨주세요." class="w-full border rounded-lg p-2.5 text-sm outline-none focus:border-blue-600"></textarea>
@@ -124,7 +182,6 @@
 
         return `
           <div class="bg-white rounded-xl border border-slate-200 overflow-hidden shadow-sm transition">
-            <!-- 공고 카드 헤더 (클릭 시 아코디언 토글) -->
             <div class="p-6 flex flex-col md:flex-row md:items-center justify-between gap-4 cursor-pointer hover:bg-slate-50/80 transition" onclick="toggleDetails(${idx})">
               <div class="space-y-1">
                 <div class="flex items-center space-x-2">
@@ -145,7 +202,6 @@
               </div>
             </div>
 
-            <!-- 공고 상세정보 영역 (아코디언 형태) -->
             <div id="details-${idx}" class="hidden border-t border-slate-100 bg-slate-50/50 p-6 space-y-6 text-sm text-slate-700">
               ${renderDetailSection("📋 담당업무", details.duties)}
               ${renderDetailSection("✅ 자격요건 (필수)", details.requirements)}
@@ -192,6 +248,17 @@
     function closeModal() {
       document.getElementById('apply-modal').classList.add('hidden');
       document.getElementById('apply-form').reset();
+    }
+
+    // 파일 용량 검사 함수 (50KB 제한)
+    function checkFileSize(input) {
+      if (input.files.length > 0) {
+        const fileSize = input.files[0].size / 1024; // KB 단위 변환
+        if (fileSize > 50) {
+          alert("첨부하신 파일 용량이 " + Math.round(fileSize) + "KB 입니다.\nEmailJS 전송 제한(50KB)을 초과하므로 파일이 해제됩니다.\n\n대용량 이력서는 메모란의 링크나 이메일로 별도 제출해 주시기 바랍니다.");
+          input.value = "";
+        }
+      }
     }
 
     function readFileAsBase64(file) {
@@ -247,7 +314,7 @@
         })
         .catch((error) => {
           console.error("EmailJS Error:", error);
-          alert("오류가 발생하여 기본 메일 앱으로 연동합니다.");
+          alert("이메일 발송에 실패했습니다. 기본 메일 앱으로 연동합니다.");
           openMailto(jobTitle, name, email, phone, message);
         })
         .finally(() => {

@@ -61,72 +61,65 @@
     </div>
   </header>
 
-  <!-- 🎨 3D 그래픽이 겹쳐진 이노그리드 스타일 히어로 배너 -->
-  <section class="bg-dark-green text-white py-16 md:py-24 px-6 overflow-hidden relative">
-
-<!-- 🎈 배경 두둥실 3D 요소들 (크기 확대: w-24 ~ w-32 적용) -->
-    <!-- 우상단: 노랑말풍선 / 동그라미 -->
-    <img src="assets/3Dyellow.png" alt="3D Yellow Balloon" class="absolute top-8 right-10 md:right-24 w-24 h-24 md:w-32 md:h-32 opacity-90 animate-float hidden md:block filter drop-shadow-xl" style="animation-delay: 0.8s;" onerror="this.src='assets/WH-로고-동그라미.png';">
+<!-- 🎨 높이가 2/3 줄어든 컴팩트 히어로 배너 -->
+  <section class="bg-dark-green text-white py-8 md:py-12 px-6 overflow-hidden relative">
     
-    <!-- 좌하단: 초록화살표 -->
-    <img src="assets/3Dgreen.png" alt="3D Arrow Background" class="absolute bottom-8 left-8 md:left-20 w-24 h-24 md:w-32 md:h-32 opacity-85 animate-float hidden md:block filter drop-shadow-xl" style="animation-delay: 2s;" onerror="this.src='assets/WH-로고-화살표.png';">
-    
-    <!-- 좌상단: 빨강하트 추가 배치 -->
-    <img src="assets/3Dred.png" alt="3D Heart Background" class="absolute top-12 left-10 md:left-24 w-20 h-20 md:w-28 md:h-28 opacity-80 animate-float hidden md:block filter drop-shadow-xl" style="animation-delay: 1.2s;" onerror="this.src='assets/WH-로고-하트.png';">
+    <!-- 🎈 배경 3D 두둥실 요소들 (위치 밀착 재조정) -->
+    <img src="assets/3D%20%EB%85%B8%EB%9E%8B%EB%A7%90%ED%92%8D%EC%84%A0.png" alt="3D Yellow Balloon" class="absolute top-4 right-8 md:right-20 w-20 h-20 md:w-24 md:h-24 opacity-80 animate-float hidden md:block filter drop-shadow-lg" style="animation-delay: 0.8s;" onerror="this.src='assets/WH-로고-동그라미.png';">
+    <img src="assets/3D%20%EC%B4%88%EB%A1%9D%ED%99%94%EC%82%B4%ED%91%9C.png" alt="3D Arrow Background" class="absolute bottom-4 left-6 md:left-16 w-20 h-20 md:w-24 md:h-24 opacity-80 animate-float hidden md:block filter drop-shadow-lg" style="animation-delay: 2s;" onerror="this.src='assets/WH-로고-화살표.png';">
+    <img src="assets/3D%20%EB%B9%A8%EA%B0%95%ED%95%98%ED%8A%B8.png" alt="3D Heart Background" class="absolute top-4 left-8 md:left-20 w-16 h-16 md:w-20 md:h-20 opacity-75 animate-float hidden md:block filter drop-shadow-lg" style="animation-delay: 1.2s;" onerror="this.src='assets/WH-로고-하트.png';">
+    <img src="assets/3D%20%ED%8C%8C%EB%9E%AD%EC%8B%AD%EC%9E%90%EA%B0%80.png" alt="3D Cross Background" class="absolute bottom-4 right-10 md:right-24 w-16 h-16 md:w-20 md:h-20 opacity-75 animate-float hidden md:block filter drop-shadow-lg" style="animation-delay: 1.8s;" onerror="this.src='assets/WH-로고-십자가.png';">
 
-    <!-- 우하단: 파랑십자가 추가 배치 -->
-    <img src="assets/3Dblue.png" alt="3D Cross Background" class="absolute bottom-10 right-12 md:right-28 w-20 h-20 md:w-28 md:h-28 opacity-80 animate-float hidden md:block filter drop-shadow-xl" style="animation-delay: 1.8s;" onerror="this.src='assets/WH-로고-십자가.png';">
-
-    <div class="max-w-5xl mx-auto space-y-10 relative z-10">
-
+    <div class="max-w-5xl mx-auto space-y-4 relative z-10">
+      
       <!-- 상단 뱃지 -->
       <div class="flex justify-center">
-        <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md text-brand-yellow border border-white/20 text-xs font-bold px-4 py-1.5 rounded-full shadow-inner">
-          <span class="w-2 h-2 rounded-full bg-brand-yellow animate-pulse"></span>
+        <div class="inline-flex items-center gap-1.5 bg-white/10 backdrop-blur-md text-brand-yellow border border-white/20 text-[11px] font-bold px-3 py-1 rounded-full shadow-inner">
+          <span class="w-1.5 h-1.5 rounded-full bg-brand-yellow animate-pulse"></span>
           위드헤브론 인재채용 ✨
         </div>
       </div>
 
-      <!-- 캡슐 타이포그래피 (3D 이미지 겹침 처리) -->
-      <div class="flex flex-wrap items-center justify-center gap-y-6 gap-x-3 md:gap-x-4 font-bold text-2xl md:text-5xl text-slate-900 tracking-wide">
+      <!-- 캡슐 타이포그래피 -->
+      <div class="flex flex-wrap items-center justify-center gap-y-4 gap-x-2.5 md:gap-x-3.5 font-bold text-xl md:text-4xl text-slate-900 tracking-wide">
         
-        <!-- 1. 위드헤브론과 (3D 빨강하트) -->
-        <div class="relative flex items-center bg-white text-slate-900 pl-4 pr-7 py-3 rounded-full shadow-xl">
-          <img src="assets/3D%20%EB%B9%A8%EA%B0%95%ED%95%98%ED%8A%B8.png" alt="3D Heart" class="w-10 h-10 md:w-12 md:h-12 object-contain -ml-2 -my-2 mr-1 transform -rotate-12 filter drop-shadow-md" onerror="this.src='assets/WH-로고-하트.png';">
-          <span class="font-cute">위드헤브론과</span>
+        <!-- 1. 위드헤브론과 함께-->
+        <div class="relative flex items-center bg-white text-slate-900 pl-3.5 pr-6 py-2 md:py-2.5 rounded-full shadow-lg">
+          <img src="assets/3D%20%EB%B9%A8%EA%B0%95%ED%95%98%ED%8A%B8.png" alt="3D Heart" class="w-8 h-8 md:w-10 md:h-10 object-contain -ml-2 -my-2 mr-1 transform -rotate-12 filter drop-shadow-md" onerror="this.src='assets/WH-로고-하트.png';">
+          <span class="font-cute">위드헤브론과 함께</span>
         </div>
 
-        <!-- 2. 함께 캄보디아 -->
-        <div class="bg-brand-red text-white px-7 py-3 rounded-full shadow-xl font-cute">
-          함께 캄보디아
+        <!-- 2. 캄보디아 현장의 -->
+        <div class="bg-brand-red text-white px-6 py-2 md:py-2.5 rounded-full shadow-lg font-cute">
+          캄보디아 현장의
         </div>
 
-        <!-- 3. 현장의 환우와 (3D 파랑십자가) -->
-        <div class="relative flex items-center bg-brand-blue text-white pl-7 pr-4 py-3 rounded-full shadow-xl font-cute">
-          <span>현장의 환우와</span>
-          <img src="assets/3D%20%ED%8C%8C%EB%9E%AD%EC%8B%AD%EC%9E%90%EA%B0%80.png" alt="3D Cross" class="w-10 h-10 md:w-12 md:h-12 object-contain -mr-2 -my-2 ml-1 transform rotate-12 filter drop-shadow-md" onerror="this.src='assets/WH-로고-십자가.png';">
+        <!-- 3. 환우와 의료진에게-->
+        <div class="relative flex items-center bg-brand-blue text-white pl-6 pr-3.5 py-2 md:py-2.5 rounded-full shadow-lg font-cute">
+          <span>환우와 의료진에게</span>
+          <img src="assets/3D%20%ED%8C%8C%EB%9E%AD%EC%8B%AD%EC%9E%90%EA%B0%80.png" alt="3D Cross" class="w-8 h-8 md:w-10 md:h-10 object-contain -mr-2 -my-2 ml-1 transform rotate-12 filter drop-shadow-md" onerror="this.src='assets/WH-로고-십자가.png';">
         </div>
 
-        <!-- 4. 의료진에게 -->
-        <div class="bg-brand-yellow text-slate-900 px-7 py-3 rounded-full shadow-xl font-cute">
-          의료진에게
+        <!-- 4. 희망을 전할 -->
+        <div class="bg-brand-yellow text-slate-900 px-6 py-2 md:py-2.5 rounded-full shadow-lg font-cute">
+          희망을 전할
         </div>
 
-        <!-- 5. 희망을 전할 (3D 초록화살표) -->
-        <div class="relative flex items-center bg-brand-green text-white pl-4 pr-7 py-3 rounded-full shadow-xl font-cute">
-          <img src="assets/3D%20%EC%B4%88%EB%A1%9D%ED%99%94%EC%82%B4%ED%91%9C.png" alt="3D Arrow" class="w-10 h-10 md:w-12 md:h-12 object-contain -ml-2 -my-2 mr-1 transform -rotate-6 filter drop-shadow-md" onerror="this.src='assets/WH-로고-화살표.png';">
-          <span>희망을 전할</span>
+        <!-- 5. 동료를 -->
+        <div class="relative flex items-center bg-brand-green text-white pl-3.5 pr-6 py-2 md:py-2.5 rounded-full shadow-lg font-cute">
+          <img src="assets/3D%20%EC%B4%88%EB%A1%9D%ED%99%94%EC%82%B4%ED%91%9C.png" alt="3D Arrow" class="w-8 h-8 md:w-10 md:h-10 object-contain -ml-2 -my-2 mr-1 transform -rotate-6 filter drop-shadow-md" onerror="this.src='assets/WH-로고-화살표.png';">
+          <span>동료를</span>
         </div>
 
-        <!-- 6. 동반자를 기다립니다 -->
-        <div class="flex items-center gap-2 bg-white text-slate-900 px-7 py-3 rounded-full shadow-xl font-cute">
-          <span>동반자를 기다립니다. 💖</span>
+        <!-- 6. 기다립니다 -->
+        <div class="flex items-center gap-1.5 bg-white text-slate-900 px-6 py-2 md:py-2.5 rounded-full shadow-lg font-cute">
+          <span>기다립니다. 💖</span>
         </div>
 
       </div>
 
       <!-- 서브 텍스트 -->
-      <p class="text-sm md:text-base text-slate-300 max-w-xl mx-auto text-center font-light leading-relaxed pt-2">
+      <p class="text-xs md:text-sm text-slate-300 max-w-xl mx-auto text-center font-light leading-relaxed pt-1">
         캄보디아와 국제보건 분야에 열정과 관심이 있는 분들의 많은 지원 바랍니다.
       </p>
 

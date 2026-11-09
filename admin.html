@@ -201,6 +201,14 @@
       } catch (e) {
         jobs = JSON.parse(localStorage.getItem('jobs_data') || '[]');
       }
+     // 💡 모집 시작일(startDate) 기준 내림차순 정렬 (시작일이 같으면 ID 내림차순)
+      jobs.sort((a, b) => {
+        if (b.startDate === a.startDate) {
+          return (b.id || 0) - (a.id || 0);
+        }
+        return b.startDate.localeCompare(a.startDate);
+      });
+
       renderAdminList();
     }
 

@@ -34,7 +34,6 @@
     .text-brand-green { color: #68B04D; }
     .bg-dark-green { background-color: #0B2520; }
     
-    /* 3D 요소 은은하게 떠있는 애니메이션 */
     @keyframes float-slow {
       0%, 100% { transform: translateY(0px) rotate(0deg); }
       50% { transform: translateY(-8px) rotate(3deg); }
@@ -62,14 +61,11 @@
     </div>
   </header>
 
-  <!-- 🎨 3D 그래픽 자산으로 꾸며진 히어로 배너 -->
+  <!-- 🎨 3D 그래픽이 겹쳐진 이노그리드 스타일 히어로 배너 -->
   <section class="bg-dark-green text-white py-16 md:py-24 px-6 overflow-hidden relative">
     
-    <!-- 배경 부유 3D 그래픽 포인트 -->
-    <img src="assets/3D%20%EB%B9%A8%EA%B0%95%ED%95%98%ED%8A%B8.png" class="absolute top-8 left-8 w-12 h-12 opacity-80 animate-float hidden md:block" onerror="this.remove()">
-    <img src="assets/3D%20%ED%8C%8C%EB%9E%AD%EC%8B%AD%EC%9E%90%EA%B0%80.png" class="absolute bottom-10 right-10 w-14 h-14 opacity-80 animate-float hidden md:block" style="animation-delay: 1.5s;" onerror="this.remove()">
-    <img src="assets/3D%20%EB%85%B8%EB%9E%8B%EB%A7%90%ED%92%8D%EC%84%A0.png" class="absolute top-12 right-20 w-12 h-12 opacity-70 animate-float hidden md:block" style="animation-delay: 0.8s;" onerror="this.remove()">
-    <img src="assets/3D%20%EC%B4%88%EB%A1%9D%ED%99%94%EC%82%B4%ED%91%9C.png" class="absolute bottom-12 left-16 w-12 h-12 opacity-70 animate-float hidden md:block" style="animation-delay: 2s;" onerror="this.remove()">
+    <img src="assets/3D%20%EB%85%B8%EB%9E%8B%EB%A7%90%ED%92%8D%EC%84%A0.png" class="absolute top-12 right-16 w-14 h-14 opacity-70 animate-float hidden md:block" style="animation-delay: 0.8s;" onerror="this.remove()">
+    <img src="assets/3D%20%EB%B9%A8%EA%B0%95%ED%95%98%ED%8A%B8.png" class="absolute bottom-10 left-12 w-12 h-12 opacity-60 animate-float hidden md:block" style="animation-delay: 1.5s;" onerror="this.remove()">
 
     <div class="max-w-5xl mx-auto space-y-10 relative z-10">
       
@@ -81,42 +77,42 @@
         </div>
       </div>
 
-      <!-- 3D 캡슐 타이포그래피 레이아웃 -->
-      <div class="flex flex-wrap items-center justify-center gap-3 md:gap-4 font-bold text-2xl md:text-5xl text-slate-900 tracking-wide">
+      <!-- 캡슐 타이포그래피 (3D 이미지 겹침 처리) -->
+      <div class="flex flex-wrap items-center justify-center gap-y-6 gap-x-3 md:gap-x-4 font-bold text-2xl md:text-5xl text-slate-900 tracking-wide">
         
-        <!-- 캡슐 1: 3D 빨강하트 -->
-        <div class="flex items-center gap-2.5 bg-white text-slate-900 px-6 py-3 rounded-full shadow-xl">
-          <img src="assets/3D%20%EB%B9%A8%EA%B0%95%ED%95%98%ED%8A%B8.png" class="w-8 h-8 object-contain" onerror="this.src='assets/WH-로고-하트.png';">
+        <!-- 1. 위드헤브론과 (3D 빨강하트) -->
+        <div class="relative flex items-center bg-white text-slate-900 pl-4 pr-7 py-3 rounded-full shadow-xl">
+          <img src="assets/3D%20%EB%B9%A8%EA%B0%95%ED%95%98%ED%8A%B8.png" alt="3D Heart" class="w-10 h-10 md:w-12 md:h-12 object-contain -ml-2 -my-2 mr-1 transform -rotate-12 filter drop-shadow-md" onerror="this.src='assets/WH-로고-하트.png';">
           <span class="font-cute">위드헤브론과</span>
         </div>
 
-        <!-- 캡슐 2: 3D 노랑말풍선 -->
-        <div class="flex items-center gap-2 bg-brand-red text-white px-7 py-3 rounded-full shadow-xl font-cute">
-          <span>함께 캄보디아</span>
-          <img src="assets/3D%20%EB%85%B8%EB%9E%8B%EB%A7%90%ED%92%8D%EC%84%A0.png" class="w-7 h-7 object-contain" onerror="this.remove()">
+        <!-- 2. 함께 캄보디아 -->
+        <div class="bg-brand-red text-white px-7 py-3 rounded-full shadow-xl font-cute">
+          함께 캄보디아
         </div>
 
-        <!-- 캡슐 3: 3D 파랑십자가 -->
-        <div class="flex items-center gap-2.5 bg-brand-blue text-white px-7 py-3 rounded-full shadow-xl font-cute">
+        <!-- 3. 현장의 환우와 (3D 파랑십자가) -->
+        <div class="relative flex items-center bg-brand-blue text-white pl-7 pr-4 py-3 rounded-full shadow-xl font-cute">
           <span>현장의 환우와</span>
-          <img src="assets/3D%20%ED%8C%8C%EB%9E%AD%EC%8B%AD%EC%9E%90%EA%B0%80.png" class="w-8 h-8 object-contain" onerror="this.src='assets/WH-로고-십자가.png';">
+          <img src="assets/3D%20%ED%8C%8C%EB%9E%AD%EC%8B%AD%EC%9E%90%EA%B0%80.png" alt="3D Cross" class="w-10 h-10 md:w-12 md:h-12 object-contain -mr-2 -my-2 ml-1 transform rotate-12 filter drop-shadow-md" onerror="this.src='assets/WH-로고-십자가.png';">
         </div>
 
-        <!-- 캡슐 4 -->
+        <!-- 4. 의료진에게 -->
         <div class="bg-brand-yellow text-slate-900 px-7 py-3 rounded-full shadow-xl font-cute">
           의료진에게
         </div>
 
-        <!-- 캡슐 5: 3D 초록화살표 -->
-        <div class="flex items-center gap-2.5 bg-brand-green text-white px-7 py-3 rounded-full shadow-xl font-cute">
-          <img src="assets/3D%20%EC%B4%88%EB%A1%9D%ED%99%94%EC%82%B4%ED%91%9C.png" class="w-8 h-8 object-contain" onerror="this.src='assets/WH-로고-화살표.png';">
+        <!-- 5. 희망을 전할 (3D 초록화살표) -->
+        <div class="relative flex items-center bg-brand-green text-white pl-4 pr-7 py-3 rounded-full shadow-xl font-cute">
+          <img src="assets/3D%20%EC%B4%88%EB%A1%9D%ED%99%94%EC%82%B4%ED%91%9C.png" alt="3D Arrow" class="w-10 h-10 md:w-12 md:h-12 object-contain -ml-2 -my-2 mr-1 transform -rotate-6 filter drop-shadow-md" onerror="this.src='assets/WH-로고-화살표.png';">
           <span>희망을 전할</span>
         </div>
 
-        <!-- 캡슐 6 -->
+        <!-- 6. 동반자를 기다립니다 -->
         <div class="flex items-center gap-2 bg-white text-slate-900 px-7 py-3 rounded-full shadow-xl font-cute">
           <span>동반자를 기다립니다. 💖</span>
         </div>
+
       </div>
 
       <!-- 서브 텍스트 -->
@@ -163,7 +159,7 @@
       </p>
     </section>
 
-    <!-- 3. 일하는 방식 (Culture Grid) -->
+    <!-- 3. 일하는 방식 -->
     <section id="culture" class="space-y-6">
       <div class="text-center space-y-2">
         <span class="text-xs font-bold text-brand-green uppercase tracking-wider">Work Culture</span>
@@ -238,7 +234,7 @@
           <label class="block text-xs font-bold text-slate-700 mb-1.5">이력서/포트폴리오 파일 첨부 (선택)</label>
           <input type="file" id="applicant-file" onchange="checkFileSize(this)" accept=".pdf,.doc,.docx,.zip,.hwp" class="w-full text-xs text-slate-500 border rounded-xl p-2.5 bg-slate-50 file:mr-3 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-bold file:bg-sky-100 file:text-brand-blue">
           <p class="text-[11px] text-amber-700 mt-2 p-2.5 bg-amber-50 rounded-xl border border-amber-200/60 leading-relaxed">
-            ⚠️ <strong>파일 용량 안내:</strong> <strong>50KB 이하</strong> 파일만 직접 첨부 전송이 가능합니다.<br>
+            ⚠️ <strong>파일 용량 안내:</strong> <strong>50KB 이하</strong> PDF 파일만 직접 첨부 전송이 가능합니다.<br>
             대용량 이력서는 메모란의 <strong>Notion / Drive 링크</strong>나 <a href="mailto:people@withhebron.com" class="underline font-bold text-brand-red">people@withhebron.com</a>으로 전달해 주세요.
           </p>
         </div>

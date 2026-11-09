@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>채용 | 위드헤브론</title>
   
-  <!-- 폰트 로드: Pretendard & 호환성 최상위 귀여운 웹폰트 'Gamja Flower' (감자꽃) -->
+  <!-- Pretendard & Gamja Flower (웹폰트 호환성 최상) -->
   <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,7 +21,6 @@
     body {
       font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
     }
-    /* 어느 PC에서나 동일하게 보이는 귀여운 감자꽃 폰트 */
     .font-cute {
       font-family: 'Gamja Flower', cursive, sans-serif !important;
     }
@@ -34,6 +33,15 @@
     .bg-brand-green { background-color: #68B04D; }
     .text-brand-green { color: #68B04D; }
     .bg-dark-green { background-color: #0B2520; }
+    
+    /* 3D 요소 은은하게 떠있는 애니메이션 */
+    @keyframes float-slow {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-8px) rotate(3deg); }
+    }
+    .animate-float {
+      animation: float-slow 4s ease-in-out infinite;
+    }
   </style>
 </head>
 <body class="bg-[#FAF9F6] text-slate-800 flex flex-col min-h-screen">
@@ -42,7 +50,7 @@
   <header class="bg-white/90 backdrop-blur-md border-b border-slate-100 sticky top-0 z-40 shadow-sm">
     <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
       <a href="#" class="flex items-center space-x-3">
-        <img src="assets/로고_투명.png" alt="WithHebron Logo" class="h-10 w-auto object-contain" onerror="this.style.display='none'; document.getElementById('txt-logo').classList.remove('hidden');">
+        <img src="assets/%EB%A1%9C%EA%B3%A0_%ED%88%AC%EB%AA%85.png" alt="WithHebron Logo" class="h-10 w-auto object-contain" onerror="this.style.display='none'; document.getElementById('txt-logo').classList.remove('hidden');">
         <span id="txt-logo" class="hidden font-cute text-3xl font-bold text-slate-900 tracking-tight">WITHHEBRON</span>
       </a>
       <nav class="hidden md:flex space-x-8 text-sm font-semibold text-slate-600">
@@ -54,12 +62,14 @@
     </div>
   </header>
 
-  <!-- 🎨 히어로 배너 (캡슐 & 크고 선명한 감자꽃 폰트) -->
+  <!-- 🎨 3D 그래픽 자산으로 꾸며진 히어로 배너 -->
   <section class="bg-dark-green text-white py-16 md:py-24 px-6 overflow-hidden relative">
     
-    <div class="absolute top-10 left-10 w-2 h-2 rounded-full bg-brand-yellow opacity-60 animate-ping"></div>
-    <div class="absolute bottom-12 right-12 w-3 h-3 rounded-full bg-brand-blue opacity-50"></div>
-    <div class="absolute top-1/2 right-1/4 w-2 h-2 rounded-full bg-brand-red opacity-40"></div>
+    <!-- 배경 부유 3D 그래픽 포인트 -->
+    <img src="assets/3D%20%EB%B9%A8%EA%B0%95%ED%95%98%ED%8A%B8.png" class="absolute top-8 left-8 w-12 h-12 opacity-80 animate-float hidden md:block" onerror="this.remove()">
+    <img src="assets/3D%20%ED%8C%8C%EB%9E%AD%EC%8B%AD%EC%9E%90%EA%B0%80.png" class="absolute bottom-10 right-10 w-14 h-14 opacity-80 animate-float hidden md:block" style="animation-delay: 1.5s;" onerror="this.remove()">
+    <img src="assets/3D%20%EB%85%B8%EB%9E%8B%EB%A7%90%ED%92%8D%EC%84%A0.png" class="absolute top-12 right-20 w-12 h-12 opacity-70 animate-float hidden md:block" style="animation-delay: 0.8s;" onerror="this.remove()">
+    <img src="assets/3D%20%EC%B4%88%EB%A1%9D%ED%99%94%EC%82%B4%ED%91%9C.png" class="absolute bottom-12 left-16 w-12 h-12 opacity-70 animate-float hidden md:block" style="animation-delay: 2s;" onerror="this.remove()">
 
     <div class="max-w-5xl mx-auto space-y-10 relative z-10">
       
@@ -71,39 +81,40 @@
         </div>
       </div>
 
-      <!-- 이노그리드 캡슐 타이포그래피 -->
+      <!-- 3D 캡슐 타이포그래피 레이아웃 -->
       <div class="flex flex-wrap items-center justify-center gap-3 md:gap-4 font-bold text-2xl md:text-5xl text-slate-900 tracking-wide">
         
-        <!-- 캡슐 1 -->
-        <div class="flex items-center gap-2 bg-white text-slate-900 px-6 py-3 rounded-full shadow-lg">
-          <img src="assets/WH-로고-하트.png" class="w-8 h-8 object-contain" onerror="this.remove()">
+        <!-- 캡슐 1: 3D 빨강하트 -->
+        <div class="flex items-center gap-2.5 bg-white text-slate-900 px-6 py-3 rounded-full shadow-xl">
+          <img src="assets/3D%20%EB%B9%A8%EA%B0%95%ED%95%98%ED%8A%B8.png" class="w-8 h-8 object-contain" onerror="this.src='assets/WH-로고-하트.png';">
           <span class="font-cute">위드헤브론과</span>
         </div>
 
-        <!-- 캡슐 2 -->
-        <div class="bg-brand-red text-white px-7 py-3 rounded-full shadow-lg font-cute">
-          함께 캄보디아
+        <!-- 캡슐 2: 3D 노랑말풍선 -->
+        <div class="flex items-center gap-2 bg-brand-red text-white px-7 py-3 rounded-full shadow-xl font-cute">
+          <span>함께 캄보디아</span>
+          <img src="assets/3D%20%EB%85%B8%EB%9E%8B%EB%A7%90%ED%92%8D%EC%84%A0.png" class="w-7 h-7 object-contain" onerror="this.remove()">
         </div>
 
-        <!-- 캡슐 3 -->
-        <div class="flex items-center gap-2 bg-brand-blue text-white px-7 py-3 rounded-full shadow-lg font-cute">
+        <!-- 캡슐 3: 3D 파랑십자가 -->
+        <div class="flex items-center gap-2.5 bg-brand-blue text-white px-7 py-3 rounded-full shadow-xl font-cute">
           <span>현장의 환우와</span>
-          <img src="assets/WH-로고-십자가.png" class="w-7 h-7 object-contain" onerror="this.remove()">
+          <img src="assets/3D%20%ED%8C%8C%EB%9E%AD%EC%8B%AD%EC%9E%90%EA%B0%80.png" class="w-8 h-8 object-contain" onerror="this.src='assets/WH-로고-십자가.png';">
         </div>
 
         <!-- 캡슐 4 -->
-        <div class="bg-brand-yellow text-slate-900 px-7 py-3 rounded-full shadow-lg font-cute">
+        <div class="bg-brand-yellow text-slate-900 px-7 py-3 rounded-full shadow-xl font-cute">
           의료진에게
         </div>
 
-        <!-- 캡슐 5 -->
-        <div class="flex items-center gap-2 bg-brand-green text-white px-7 py-3 rounded-full shadow-lg font-cute">
-          <img src="assets/WH-로고-화살표.png" class="w-7 h-7 object-contain" onerror="this.remove()">
+        <!-- 캡슐 5: 3D 초록화살표 -->
+        <div class="flex items-center gap-2.5 bg-brand-green text-white px-7 py-3 rounded-full shadow-xl font-cute">
+          <img src="assets/3D%20%EC%B4%88%EB%A1%9D%ED%99%94%EC%82%B4%ED%91%9C.png" class="w-8 h-8 object-contain" onerror="this.src='assets/WH-로고-화살표.png';">
           <span>희망을 전할</span>
         </div>
 
         <!-- 캡슐 6 -->
-        <div class="flex items-center gap-2 bg-white text-slate-900 px-7 py-3 rounded-full shadow-lg font-cute">
+        <div class="flex items-center gap-2 bg-white text-slate-900 px-7 py-3 rounded-full shadow-xl font-cute">
           <span>동반자를 기다립니다. 💖</span>
         </div>
       </div>
@@ -142,7 +153,8 @@
     </section>
 
     <!-- 2. 회사소개 -->
-    <section id="about" class="bg-white p-10 rounded-3xl border border-slate-200/70 shadow-sm space-y-4">
+    <section id="about" class="bg-white p-10 rounded-3xl border border-slate-200/70 shadow-sm space-y-4 relative overflow-hidden">
+      <img src="assets/3D%20%EB%B9%A8%EA%B0%95%ED%95%98%ED%8A%B8.png" class="absolute -right-4 -bottom-4 w-32 opacity-10 pointer-events-none" onerror="this.remove()">
       <div class="inline-block px-3 py-1 bg-rose-50 text-brand-red rounded-lg text-xs font-bold">About Us</div>
       <h3 class="font-cute text-3xl md:text-4xl font-bold text-slate-900">따뜻한 나눔으로 소망을 더하는 위드헤브론 🌿</h3>
       <p class="text-slate-600 leading-relaxed text-sm md:text-base">
@@ -151,7 +163,7 @@
       </p>
     </section>
 
-    <!-- 3. 일하는 방식 -->
+    <!-- 3. 일하는 방식 (Culture Grid) -->
     <section id="culture" class="space-y-6">
       <div class="text-center space-y-2">
         <span class="text-xs font-bold text-brand-green uppercase tracking-wider">Work Culture</span>

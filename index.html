@@ -64,14 +64,21 @@
   <!-- 🎨 3D 그래픽이 겹쳐진 이노그리드 스타일 히어로 배너 -->
   <section class="bg-dark-green text-white py-16 md:py-24 px-6 overflow-hidden relative">
 
-    <!-- 배경 두둥실 3D 요소들 -->
-    <img src="assets/3Dyellow.png" class="absolute top-12 right-16 w-14 h-14 opacity-70 animate-float hidden md:block" style="animation-delay: 0.8s;" onerror="this.remove()">
-    <img src="assets/3Dgreen.png" class="absolute bottom-10 left-12 w-12 h-12 opacity-60 animate-float hidden md:block" style="animation-delay: 1.5s;" onerror="this.remove()">
-    <img src="assets/3Dgreen.png" class="absolute bottom-10 left-12 w-12 h-12 opacity-60 animate-float hidden md:block" style="animation-delay: 1.5s;" onerror="this.remove()">
-    <img src="assets/3Dgreen.png" class="absolute bottom-10 left-12 w-12 h-12 opacity-60 animate-float hidden md:block" style="animation-delay: 1.5s;" onerror="this.remove()">
+<!-- 🎈 배경 두둥실 3D 요소들 (크기 확대: w-24 ~ w-32 적용) -->
+    <!-- 우상단: 노랑말풍선 / 동그라미 -->
+    <img src="assets/3Dyellow.png" alt="3D Yellow Balloon" class="absolute top-8 right-10 md:right-24 w-24 h-24 md:w-32 md:h-32 opacity-90 animate-float hidden md:block filter drop-shadow-xl" style="animation-delay: 0.8s;" onerror="this.src='assets/WH-로고-동그라미.png';">
+    
+    <!-- 좌하단: 초록화살표 -->
+    <img src="assets/3Dgreen.png" alt="3D Arrow Background" class="absolute bottom-8 left-8 md:left-20 w-24 h-24 md:w-32 md:h-32 opacity-85 animate-float hidden md:block filter drop-shadow-xl" style="animation-delay: 2s;" onerror="this.src='assets/WH-로고-화살표.png';">
+    
+    <!-- 좌상단: 빨강하트 추가 배치 -->
+    <img src="assets/3Dred.png" alt="3D Heart Background" class="absolute top-12 left-10 md:left-24 w-20 h-20 md:w-28 md:h-28 opacity-80 animate-float hidden md:block filter drop-shadow-xl" style="animation-delay: 1.2s;" onerror="this.src='assets/WH-로고-하트.png';">
+
+    <!-- 우하단: 파랑십자가 추가 배치 -->
+    <img src="assets/3Dblue.png" alt="3D Cross Background" class="absolute bottom-10 right-12 md:right-28 w-20 h-20 md:w-28 md:h-28 opacity-80 animate-float hidden md:block filter drop-shadow-xl" style="animation-delay: 1.8s;" onerror="this.src='assets/WH-로고-십자가.png';">
 
     <div class="max-w-5xl mx-auto space-y-10 relative z-10">
-      
+
       <!-- 상단 뱃지 -->
       <div class="flex justify-center">
         <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md text-brand-yellow border border-white/20 text-xs font-bold px-4 py-1.5 rounded-full shadow-inner">

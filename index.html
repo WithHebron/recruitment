@@ -500,6 +500,21 @@ ${message}
     }
 
     window.onload = loadJobs;
+
+// 우클릭 및 복사/드래그 방지
+    document.addEventListener('contextmenu', function(e) {
+      e.preventDefault();
+    });
+
+    document.addEventListener('dragstart', function(e) {
+      e.preventDefault();
+    });
+
+    document.addEventListener('selectstart', function(e) {
+      e.preventDefault();
+    });
+
+    
   </script>
 </body>
 </html>

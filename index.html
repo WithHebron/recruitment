@@ -501,7 +501,7 @@ ${message}
 
     window.onload = loadJobs;
 
-// 우클릭 및 복사/드래그 방지
+// 우클릭 및 복사/드래그 방지 (입력창은 드래그 허용)
     document.addEventListener('contextmenu', function(e) {
       e.preventDefault();
     });
@@ -511,6 +511,9 @@ ${message}
     });
 
     document.addEventListener('selectstart', function(e) {
+      if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') {
+        return true; // 입력창과 미리보기 창에서는 드래그 허용
+      }
       e.preventDefault();
     });
 

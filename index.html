@@ -395,7 +395,7 @@
       document.getElementById('apply-form').reset();
     }
 
-    // 💡 mailto: 연동 지원하기 처리 함수
+// 💡 팝업 차단 및 기본 메일 앱 미설치 환경까지 완벽 대응한 이메일 연결 함수
     function handleApply(e) {
       e.preventDefault();
 
@@ -405,9 +405,8 @@
       const phone = document.getElementById('applicant-phone').value;
       const message = document.getElementById('applicant-message').value;
 
-      const mailtoSubject = encodeURIComponent(`[위드헤브론 채용 지원] ${jobTitle} - ${name}`);
-      const mailtoBody = encodeURIComponent(
-`안녕하세요, 위드헤브론 채용에 지원합니다.
+      const subject = `[위드헤브론 채용 지원] ${jobTitle} - ${name}`;
+      const body = `안녕하세요, 위드헤브론 채용에 지원합니다.
 
 ■ 지원 공고: ${jobTitle}
 ■ 지원자 이름: ${name}
@@ -418,16 +417,29 @@
 ${message}
 
 --------------------------------------------------
-※ 파일(이력서/포트폴리오)이 있으신 경우, 발송 전 이 메일에 직접 첨부해 주세요.`
-      );
+※ 파일(이력서/포트폴리오)이 있으신 경우, 이 메일에 직접 첨부하여 발송해 주세요.`;
 
-      // 이메일 앱 호출
-      window.location.href = `mailto:people@withhebron.com?subject=${mailtoSubject}&body=${mailtoBody}`;
+      // 1. mailto URL 생성
+      const mailtoUrl = `mailto:people@withhebron.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 
-      alert("이메일 작성 창으로 이동합니다.\n이력서 파일이 있으신 경우 열린 메일 창에서 파일을 직접 첨부해 주세요!");
+      // 2. 가상 앵커 태그 생성 후 즉시 클릭 (브라우저 차단 회피)
+      const link = document.createElement('a');
+      link.href = mailtoUrl;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+
+      // 3. 메일 프로그램 미연결 사용자를 위한 웹메일(Gmail) 바로가기 옵션 제공
+      setTimeout(() => {
+        const useGmail = confirm("기본 메일 앱이 열리지 않으셨나요?\n\n[확인]을 누르시면 Gmail 웹페이지에서 즉시 작성하실 수 있습니다.");
+        if (useGmail) {
+          const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=people@withhebron.com&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+          window.open(gmailUrl, '_blank');
+        }
+      }, 500);
+
       closeModal();
     }
-
     window.onload = loadJobs;
   </script>
 </body>

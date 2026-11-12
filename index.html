@@ -135,10 +135,10 @@
           <h2 class="font-cute text-4xl md:text-5xl font-bold text-slate-900 mt-1">지원 가능한 채용 공고 🎈</h2>
         </div>
         
-        <!-- 공고 필터 탭 -->
+    <!-- 공고 필터 탭 ([진행 중] 기본 활성화) -->
         <div class="flex space-x-2 bg-slate-200/60 p-1 rounded-xl text-xs font-semibold">
-          <button onclick="filterJobs('ALL')" id="tab-ALL" class="px-4 py-2 rounded-lg bg-white text-slate-900 shadow-sm transition">전체</button>
-          <button onclick="filterJobs('OPEN')" id="tab-OPEN" class="px-4 py-2 rounded-lg text-slate-600 hover:text-slate-900 transition">진행 중</button>
+          <button onclick="filterJobs('ALL')" id="tab-ALL" class="px-4 py-2 rounded-lg text-slate-600 hover:text-slate-900 transition">전체</button>
+          <button onclick="filterJobs('OPEN')" id="tab-OPEN" class="px-4 py-2 rounded-lg bg-white text-slate-900 shadow-sm font-bold transition">진행 중</button>
           <button onclick="filterJobs('CLOSED')" id="tab-CLOSED" class="px-4 py-2 rounded-lg text-slate-600 hover:text-slate-900 transition">마감</button>
         </div>
       </div>
@@ -298,7 +298,7 @@
 
   <script>
     let jobs = [];
-    let currentFilter = 'ALL';
+    let currentFilter = 'OPEN'; // 기본값을 'OPEN'(진행 중)으로 설정
     let generatedSubject = "";
     let generatedBody = "";
 
